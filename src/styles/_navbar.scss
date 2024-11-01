@@ -1,3 +1,5 @@
+@import "_variables.scss";
+
 @font-face {
   font-family: "PoppinMed";
   src: url(../utils/fonts/Poppins-Medium.ttf);
@@ -18,7 +20,7 @@ nav {
 
   display: inline-flex;
   justify-content: space-evenly;
-  gap: 25%;
+  // gap: 25%;
 
   align-items: center;
 }
@@ -37,10 +39,10 @@ nav > ul > li {
     content: "";
     position: absolute;
     width: 70%;
-    height: 1px;
+    // height: 1;
     bottom: 0;
     left: 15%;
-    border-bottom: 2px solid #322311;
+    border-bottom: 2px solid $main-text;
 
     transition: all 0.5s;
   }
@@ -50,15 +52,24 @@ nav > ul > li {
     width: 110%;
     left: -5%;
 
-    border-bottom-color: #fa92a3;
+    border-bottom-color: $accent;
   }
+}
 
-  &:last-child {
-    margin-right: 0;
+.border-special {
+  margin-right: 0;
+  border: 2px solid $accent;
+  padding: 0.5rem;
+  border-radius: 1rem;
+
+  &::before {
+    content: "";
+    border: none;
   }
 }
 
 nav > img {
   max-height: 5rem;
+  padding: 0.5rem;
   cursor: pointer;
 }

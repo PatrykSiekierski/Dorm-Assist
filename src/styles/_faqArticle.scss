@@ -1,0 +1,27 @@
+@import "_variables.scss";
+
+#faq-article {
+  margin-top: 10vh;
+  //   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+// #faq-article ol > li {
+//   &::marker {
+//     // font-size: 500;
+//     font-size: large;
+//     font-weight: bold;
+//   }
+//   //   list-style: decimal;
+//   //   list-style: bold;
+// }
+
+#faq-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5vw;
+  margin: 0 10vw 0 10vw;
+}

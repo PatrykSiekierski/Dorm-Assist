@@ -1,0 +1,74 @@
+@import "_variables.scss";
+
+@font-face {
+  font-family: "Roboto";
+  src: url(../utils/fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: "PoppinMed";
+  src: url(../utils/fonts/Poppins-Medium.ttf);
+}
+
+// h1,
+// h2,
+// h3,
+// div {
+//   width: fit-content;
+// }
+
+#main-article {
+  background: rgb(255, 160, 97);
+  background: linear-gradient(
+    165deg,
+    rgba(255, 160, 97, 0.3) 0%,
+    rgba(255, 231, 216, 0.1) 25%,
+    rgba(255, 187, 142, 0) 50%,
+    rgba(255, 160, 97, 0.1) 75%,
+    rgba(255, 160, 97, 0.3) 100%
+  );
+}
+
+#main-article {
+  font-family: "Roboto", sans-serif;
+
+  display: inline-flex;
+  padding-bottom: 10vh;
+  justify-content: space-evenly;
+  gap: 10vw;
+  width: 100vw;
+  height: 80vh;
+  align-items: center;
+}
+
+#main-article img {
+  height: 50vh;
+}
+
+#buttons > button {
+  font-family: "PoppinMed", sans-serif;
+  font-size: 1.2rem;
+  color: $main-text;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+  border: none;
+  cursor: pointer;
+
+  // &:last-child {
+  //   border: 2px solid $accent;
+  // }
+}
+
+#buttons .border-special {
+  margin-right: 0;
+  border: 2px solid $accent;
+  padding: 0.5rem;
+  border-radius: 1rem;
+
+  &::before {
+    content: "";
+    border: none;
+  }
+}

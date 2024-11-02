@@ -1,27 +1,50 @@
 @import "_variables.scss";
 
 #faq-article {
-  margin-top: 10vh;
+  margin-top: calc(1.5rem + 5vh);
   //   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
 
-// #faq-article ol > li {
-//   &::marker {
-//     // font-size: 500;
-//     font-size: large;
-//     font-weight: bold;
-//   }
-//   //   list-style: decimal;
-//   //   list-style: bold;
-// }
+  h1 {
+    margin-bottom: 0;
+  }
+
+  > p {
+    margin-bottom: calc(1.5rem + 5vh);
+  }
+}
 
 #faq-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5vw;
   margin: 0 10vw 0 10vw;
+
+  img {
+    max-height: 2rem;
+    margin-right: 1rem;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  > div {
+    padding: 1rem;
+    display: inline-flex;
+    box-shadow: 0.3rem 0.3rem 1rem 0 rgba($main-text, 0.3);
+    border-radius: 1rem;
+    align-items: center;
+
+    div {
+      height: 100%;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
 }

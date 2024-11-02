@@ -5,13 +5,13 @@ export default function FAQ() {
     <article id="faq-article">
       <h1 className="enlarge-text">Częste pytania</h1>
       <p>
-        Wi-fi? Jak połączyć sie z internetem? Lub inne pytania, które można
+        Wi-fi? Jak połączyć sie z internetem? Lub inne problemy, które można
         samemu rozwiązać:
       </p>
       <div id="faq-container">
         <FaqElement
           img={{
-            src: "src/assets/placeholder-logo-1.png",
+            src: "src/assets/cable-lan-svgrepo-com.svg",
             alt: "placeholder_logo",
           }}
           info={{
@@ -21,7 +21,7 @@ export default function FAQ() {
         />
         <FaqElement
           img={{
-            src: "src/assets/placeholder-logo-1.png",
+            src: "src/assets/cable-lan-svgrepo-com.svg",
             alt: "placeholder_logo",
           }}
           info={{
@@ -31,7 +31,7 @@ export default function FAQ() {
         />
         <FaqElement
           img={{
-            src: "src/assets/placeholder-logo-1.png",
+            src: "src/assets/cable-lan-svgrepo-com.svg",
             alt: "placeholder_logo",
           }}
           info={{
@@ -41,7 +41,7 @@ export default function FAQ() {
         />
         <FaqElement
           img={{
-            src: "src/assets/placeholder-logo-1.png",
+            src: "src/assets/cable-lan-svgrepo-com.svg",
             alt: "placeholder_logo",
           }}
           info={{
@@ -58,8 +58,10 @@ function FaqElement({ img, info }) {
   return (
     <div>
       <img src={img.src} alt={img.alt} />
-      <h3>{info.title}</h3>
-      <p>{info.text}</p>
+      <div>
+        <h3>{info.title}</h3>
+        <p>{info.text}</p>
+      </div>
     </div>
   );
 }

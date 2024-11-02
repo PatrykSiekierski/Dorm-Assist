@@ -1,0 +1,48 @@
+@import "_variables.scss";
+
+#Navigation-Article {
+  //   width: 80vw;
+  padding: 0 10vw 0 10vw;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: calc(1rem + 5vh);
+  //   display: flex;
+
+  p {
+    display: inline;
+  }
+}
+
+#navigation-main-content {
+  //   width: 100%;
+  display: flex;
+}
+
+#option-container {
+  //   display: flex;
+  padding: 1rem;
+  width: 20vw;
+  :first-child {
+    margin-top: 0;
+  }
+  button {
+    display: block;
+    width: 100%;
+
+    font-family: "PoppinMed", sans-serif;
+    font-size: 1.2rem;
+    color: $main-text;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    // margin: 1rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0.3rem 0.3rem 1rem 0 rgba($main-text, 0.3);
+
+    // gap: 1rem;
+
+    margin-top: 1rem;
+  }
+}

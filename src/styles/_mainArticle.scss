@@ -34,15 +34,23 @@
 
   display: inline-flex;
   padding-bottom: 10vh;
-  justify-content: space-evenly;
-  gap: 10vw;
+  justify-content: space-between;
+  gap: 5vw;
   width: 100vw;
   height: 80vh;
   align-items: center;
-}
 
-#main-article img {
-  height: 50vh;
+  > :first-child {
+    margin-left: 7vw;
+  }
+
+  > :last-child {
+    margin-right: 7vw;
+  }
+
+  img {
+    height: 50vh;
+  }
 }
 
 #buttons > button {
@@ -55,7 +63,7 @@
   margin: 1rem;
   border: none;
   cursor: pointer;
-
+  box-shadow: 0.3rem 0.3rem 1rem 0 rgba($main-text, 0.3);
   // &:last-child {
   //   border: 2px solid $accent;
   // }

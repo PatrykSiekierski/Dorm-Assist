@@ -1,0 +1,10 @@
+@import "_variables.scss";
+
+footer {
+  background-color: darken($color: $main-text, $amount: 5);
+  color: white;
+
+  p {
+    margin: 0;
+  }
+}

@@ -13,8 +13,8 @@ export default function Main() {
           </h3>
 
           <div id="buttons">
-            <button>Zgłoś</button>
-            <button className="border-special">Login</button>
+            <button className="button">Zgłoś</button>
+            <button className="border-special button">Login</button>
           </div>
         </div>
         <div>

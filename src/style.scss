@@ -30,3 +30,16 @@ h1 {
 .enlarge-text {
   font-size: 2rem;
 }
+
+.button {
+  font-family: "PoppinMed", sans-serif;
+  font-size: 1.2rem;
+  color: $main-text;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0.3rem 0.3rem 1rem 0 rgba($main-text, 0.3);
+}

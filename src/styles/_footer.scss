@@ -1,10 +1,39 @@
 @import "_variables.scss";
 
 footer {
-  background-color: darken($color: $main-text, $amount: 5);
+  padding: 1rem 0 2rem;
+  background-color: darken($color: $main-text, $amount: 0);
   color: white;
+
+  // display: flex;
+  // justify-content: space-around;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  text-align: center;
+
+  div {
+    width: 80%;
+  }
 
   p {
     margin: 0;
   }
+
+  li {
+    display: list-item;
+    list-style-type: none;
+
+    a {
+      text-align: center;
+      font-size: 1rem;
+    }
+  }
+}
+
+#links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }

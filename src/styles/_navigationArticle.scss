@@ -56,6 +56,7 @@
     cursor: pointer;
     box-shadow: 0.3rem 0.3rem 1rem 0 rgba($main-text, 0.3);
 
+    transition: 0.25s;
     // gap: 1rem;
 
     // margin-top: 1rem;
@@ -70,4 +71,10 @@
   p {
     // width: 70%;
   }
+}
+
+.selected-button {
+  transition: 0.25s;
+  background-color: $main-text !important;
+  color: white !important;
 }

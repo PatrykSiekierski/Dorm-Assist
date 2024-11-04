@@ -5,22 +5,22 @@ export default function Footer() {
     <footer>
       <div id="footer-description">
         <h2>About</h2>
-        <p>lskdflkdss</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit itaque
+          in ad unde iusto, aliquam tenetur magnam. Iste soluta veniam nesciunt
+          iure exercitationem, nisi blanditiis unde quidem amet quisquam
+          mollitia dolores esse odio. Praesentium reiciendis deleniti, corrupti
+          excepturi quos natus doloribus commodi nulla, nemo saepe laboriosam.
+          Ut cumque doloribus voluptas.
+        </p>
       </div>
       <div>
         <h2>Navigation links</h2>
-        <nav>
-          <ul>
-            <li>
-              <a>test</a>
-            </li>
-            <li>
-              <a>test</a>
-            </li>
-            <li>
-              <a>test</a>
-            </li>
-          </ul>
+        <nav id="links">
+          <a>tests</a>
+          <a>tests</a>
+          <a>tests</a>
+          <a>tests</a>
         </nav>
       </div>
     </footer>

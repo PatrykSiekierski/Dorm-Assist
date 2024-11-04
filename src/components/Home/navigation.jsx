@@ -85,6 +85,11 @@ export default function Navigation() {
 
 function OptionButton({ text, target, selectedOption }) {
   return (
-    <button onClick={() => selectedOption.setOption(target)}>{text}</button>
+    <button
+      className={selectedOption.option == target ? "selected-button" : ""}
+      onClick={() => selectedOption.setOption(target)}
+    >
+      {text}
+    </button>
   );
 }

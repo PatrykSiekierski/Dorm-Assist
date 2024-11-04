@@ -3,13 +3,15 @@ import "../../styles/_navbar.scss";
 export default function Navbar() {
   return (
     <nav>
-      <img src="src/assets/cable-lan-svgrepo-com.svg" alt="Logo" />
+      <a href="home.jsx">
+        <img src="src/assets/cable-lan-svgrepo-com.svg" alt="Logo" />
+      </a>
       <ul>
         <li>
           <a>FAQ</a>
         </li>
         <li>
-          <a>Report</a>
+          <a href="/navbar.jsx">Report</a>
         </li>
       </ul>
       <ul>

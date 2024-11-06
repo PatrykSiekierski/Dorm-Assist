@@ -1,4 +1,4 @@
-@import "_variables.scss";
+@import "../General/variables.scss";
 
 @font-face {
   font-family: "Roboto";
@@ -30,7 +30,7 @@
 }
 
 #main-article {
-  font-family: "Roboto", sans-serif;
+  font-family: "PoppinMed", sans-serif;
 
   display: inline-flex;
   padding-bottom: 10vh;
@@ -50,6 +50,10 @@
 
   img {
     height: 50vh;
+  }
+
+  p {
+    margin: 0;
   }
 }
 

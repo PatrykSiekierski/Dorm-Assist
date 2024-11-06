@@ -43,11 +43,11 @@ nav {
 
   > ul li {
     font-family: "PoppinMed", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 
     cursor: pointer;
     display: inline;
-    margin-right: 4rem;
+    margin-right: 5vw;
 
     position: relative;
 
@@ -55,8 +55,7 @@ nav {
       content: "";
       position: absolute;
       width: 70%;
-      // height: 1;
-      bottom: 0;
+      bottom: -2px;
       left: 15%;
       border-bottom: 2px solid $main-text;
 

@@ -1,20 +1,21 @@
-@import "_variables.scss";
+@import "../General/variables.scss";
 
 footer {
-  padding: 1rem 0 2rem;
+  padding: 1rem 0 1rem;
   background-color: darken($color: $main-text, $amount: 0);
   color: white;
 
   // display: flex;
   // justify-content: space-around;
 
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
-  text-align: center;
-
-  div {
-    width: 80%;
+  > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    text-align: center;
+    div {
+      width: 80%;
+    }
   }
 
   p {
@@ -36,4 +37,14 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
+  a {
+    color: white;
+  }
+}
+
+#copyrights-message {
+  margin-top: 2rem;
+  color: rgb(182, 151, 107);
+  text-align: center;
 }

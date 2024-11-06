@@ -1,4 +1,4 @@
-import "../../styles/_mainArticle.scss";
+import "../../styles/Home/_mainArticle.scss";
 
 export default function Main() {
   return (
@@ -6,11 +6,11 @@ export default function Main() {
       <article id="main-article">
         <div>
           <h1>Problem z internetem w akademiku Uniwersyteckim?</h1>
-          <h3>
+          <p>
             Zobacz jak możesz samodzielnie rozwiązać problem,<br></br> lub zgłoś
-            problem przez te stronę,<br></br> a administrator przyjdzie do
+            problem gdy to nie pomoże,<br></br> a administrator przyjdzie po
             Ciebie.
-          </h3>
+          </p>
 
           <div id="buttons">
             <button className="button">Zgłoś</button>

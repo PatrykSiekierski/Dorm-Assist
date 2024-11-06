@@ -1,4 +1,4 @@
-import "../../styles/_faqArticle.scss";
+import "../../styles/Home/_faqArticle.scss";
 
 export default function FAQ() {
   return (
@@ -56,7 +56,7 @@ export default function FAQ() {
 
 function FaqElement({ img, info }) {
   return (
-    <div>
+    <div className="faq-element">
       <img src={img.src} alt={img.alt} />
       <div>
         <h3>{info.title}</h3>

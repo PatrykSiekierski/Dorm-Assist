@@ -1,17 +1,20 @@
-import "../../styles/_navbar.scss";
+import "../../styles/General/_navbar.scss";
 
 export default function Navbar() {
   return (
     <nav>
-      <a href="home.jsx">
+      <a href=".">
         <img src="src/assets/cable-lan-svgrepo-com.svg" alt="Logo" />
       </a>
       <ul>
         <li>
-          <a>FAQ</a>
+          <a href="#faq-article">Pytania</a>
         </li>
         <li>
-          <a href="/navbar.jsx">Report</a>
+          <a href="#Navigation-Article">Jak zgłosić problem?</a>
+        </li>
+        <li>
+          <a href="/report">Zgłoś problem</a>
         </li>
       </ul>
       <ul>

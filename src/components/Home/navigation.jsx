@@ -1,18 +1,18 @@
 import { useState } from "react";
-import "../../styles/_navigationArticle.scss";
+import "../../styles/Home/_navigationArticle.scss";
 
 const navigationContent = [
-  {
-    title: "Zgłoś problem w recepcji",
-    description:
-      "Możesz zgłosić problem w zeszycie przy recepcji. " +
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, hic sunt nemo rerum autem ab nisi iste ratione itaque earum id tempora quis laborum impedit." +
-      "Corrupti ducimus illum excepturi architecto culpa consequuntur, est, iure nisi rerum voluptas iste libero reiciendis quidem facere repellendus repellat sapiente rem assumenda nam ipsa minus.",
-  },
   {
     title: "Zgłoś problem na stronie",
     description:
       "Możesz zgłosić problem na stronie" +
+      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, hic sunt nemo rerum autem ab nisi iste ratione itaque earum id tempora quis laborum impedit." +
+      "Corrupti ducimus illum excepturi architecto culpa consequuntur, est, iure nisi rerum voluptas iste libero reiciendis quidem facere repellendus repellat sapiente rem assumenda nam ipsa minus.",
+  },
+  {
+    title: "Zgłoś problem w recepcji",
+    description:
+      "Możesz zgłosić problem w zeszycie przy recepcji. " +
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, hic sunt nemo rerum autem ab nisi iste ratione itaque earum id tempora quis laborum impedit." +
       "Corrupti ducimus illum excepturi architecto culpa consequuntur, est, iure nisi rerum voluptas iste libero reiciendis quidem facere repellendus repellat sapiente rem assumenda nam ipsa minus.",
   },
@@ -51,12 +51,12 @@ export default function Navigation() {
       <div id="navigation-main-content">
         <div id="option-container">
           <OptionButton
-            text="W recepcji"
+            text="Na stronie"
             target="1"
             selectedOption={{ option, setOption }}
           />
           <OptionButton
-            text="Na stronie"
+            text="W recepcji"
             target="2"
             selectedOption={{ option, setOption }}
           />
@@ -69,7 +69,13 @@ export default function Navigation() {
         <div id="option-description">
           <h3>{title}</h3>
           <p>{content}</p>
-          {option == 3 ? <button className="button">test</button> : <></>}
+          {option == 1 ? (
+            <a className="button button-like-link" href="/report">
+              Zgłoś na stronie
+            </a>
+          ) : (
+            <></>
+          )}
           {/* <button>Navigation button</button> */}
         </div>
         {/* <p>- Będąc zalogowanym możesz patrzeć na historie swoich zgłoszeń</p>
@@ -86,7 +92,9 @@ export default function Navigation() {
 function OptionButton({ text, target, selectedOption }) {
   return (
     <button
-      className={selectedOption.option == target ? "selected-button" : ""}
+      className={`button ${
+        selectedOption.option == target ? "selected-button" : ""
+      }`}
       onClick={() => selectedOption.setOption(target)}
     >
       {text}

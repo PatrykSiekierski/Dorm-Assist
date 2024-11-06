@@ -3,7 +3,7 @@ import "../../styles/General/_navbar.scss";
 export default function Navbar() {
   return (
     <nav>
-      <a href=".">
+      <a href="/">
         <img src="src/assets/cable-lan-svgrepo-com.svg" alt="Logo" />
       </a>
       <ul>

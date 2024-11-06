@@ -58,3 +58,14 @@ ul {
 html {
   scroll-behavior: smooth;
 }
+
+.center-text {
+  text-align: center;
+  width: 100%;
+}
+
+.border {
+  box-shadow: 0.3rem 0.3rem 1rem 0 rgba($main-text, 0.3);
+  border-radius: 1rem;
+  padding: 1rem;
+}

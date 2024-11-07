@@ -14,7 +14,7 @@ export default function Navbar() {
           <a href="#Navigation-Article">Jak zgłosić problem?</a>
         </li>
         <li>
-          <a href="/report">Zgłoś problem</a>
+          <a href="/report">Zgłoś Online</a>
         </li>
       </ul>
       <ul>

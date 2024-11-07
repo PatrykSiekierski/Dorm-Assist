@@ -43,11 +43,6 @@ h1 {
   text-decoration: 0;
   cursor: pointer;
   box-shadow: 0.3rem 0.3rem 1rem 0 rgba($main-text, 0.3);
-  transition: 0.5s;
-
-  &:hover {
-    box-shadow: 0.3rem 0.3rem 1rem 0 rgba($main-text, 0.5);
-  }
 }
 
 ul {

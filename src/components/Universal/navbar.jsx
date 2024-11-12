@@ -8,10 +8,10 @@ export default function Navbar() {
       </a>
       <ul>
         <li>
-          <a href="#faq-article">Pytania</a>
+          <a href="/#faq-article">Pytania</a>
         </li>
         <li>
-          <a href="#Navigation-Article">Jak zgłosić problem?</a>
+          <a href="/#Navigation-Article">Jak zgłosić problem?</a>
         </li>
         <li>
           <a href="/report">Zgłoś Online</a>

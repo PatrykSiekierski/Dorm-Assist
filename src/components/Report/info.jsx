@@ -19,33 +19,42 @@ export default function Info() {
             informacji, tylko dłużej
           </p> */}
         </div>
-        <div>
+        <div className="form-side">
+          <h2>Informacje czy coś</h2>
           <form action="" className="form-holder">
-            <label htmlFor="room">Number pokoju:</label>
-            <input type="text" id="room" placeholder="303A" />
+            <div className="form-segment">
+              <label htmlFor="room">Number pokoju:</label>
+              <input type="text" id="room" placeholder="303A" />
+            </div>
             {/* <label htmlFor="problem">Opisz krótko problem:</label>
         <input type="text" id="problem" placeholder="" /> */}
-            <label htmlFor="system">System operacyjny: </label>
-            <select id="system">
-              <option value="windows">Windows</option>
-              <option value="macos">MacOs</option>
-              <option value="linux">Linux</option>
-              <option value="android">Android</option>
-              <option value="other">Other</option>
-            </select>
-            <label htmlFor="self">
-              Czy gniazdko jest poprawnie zamątowane?
-            </label>
-            <input type="checkbox" id="self" />
-
-            <label htmlFor="self">Czy Interent działał wcześniej?</label>
-            <input type="checkbox" id="self" />
-
-            <label htmlFor="opis">Opisz krótko problem:</label>
-            <textarea
-              id="opis"
-              placeholder="Gniazdko nie ma wejścia Ethernet."
-            ></textarea>
+            <div className="form-segment">
+              <label htmlFor="system">System operacyjny: </label>
+              <select id="system">
+                <option value="windows">Windows</option>
+                <option value="macos">MacOs</option>
+                <option value="linux">Linux</option>
+                <option value="android">Android</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div className="form-segment">
+              <label htmlFor="self">
+                Czy gniazdko jest poprawnie zamątowane?
+              </label>
+              <input type="checkbox" id="self" />
+            </div>
+            <div className="form-segment">
+              <label htmlFor="self">Czy Interent działał wcześniej?</label>
+              <input type="checkbox" id="self" />
+            </div>
+            <div className="form-segment">
+              <label htmlFor="opis">Opisz krótko problem:</label>
+              <textarea
+                id="opis"
+                placeholder="Gniazdko nie ma wejścia Ethernet."
+              ></textarea>
+            </div>
           </form>
         </div>
       </div>

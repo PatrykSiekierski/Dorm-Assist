@@ -1,9 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import "../../styles/Report/_form.scss";
 
 export default function Form() {
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get("http://localhost:8080/api/form/get");
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching data", error);
+  //   }
+  // };
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/form/post",
+        "post req z reacta testowy"
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching data", error);
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetchData();
+  };
+
   return (
-    <form action="" className="form-holder">
+    <form action="" className="form-holder" onSubmit={handleSubmit}>
       <div className="form-segment">
         <label htmlFor="room">Number pokoju:</label>
         <input type="text" id="room" placeholder="303A" />
@@ -37,7 +64,9 @@ export default function Form() {
           placeholder="Gniazdko nie ma wejścia Ethernet."
         ></textarea>
       </div>
-      <button id="submit-button">Submit</button>
+      <button type="submit" id="submit-button">
+        Submit
+      </button>
     </form>
   );
 }

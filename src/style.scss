@@ -23,6 +23,22 @@ body {
   color: $main-text;
 }
 
+html,
+body {
+  height: 100%; /* Make sure the height of the body covers the viewport */
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the wrapper fills the full height */
+}
+
+main {
+  flex: 1; /* Push the footer to the bottom */
+}
+
 h1 {
   // color: lighten($color: $main-text, $amount: 22%);
   color: $light-text;

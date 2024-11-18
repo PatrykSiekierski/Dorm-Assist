@@ -7,7 +7,9 @@ import Navigation from "../components/Home/navigation";
 export default function Home() {
   return (
     <>
-      <Navbar />
+      <header>
+        <Navbar />
+      </header>
       <main>
         <Main />
         <FAQ />

@@ -12,6 +12,41 @@ export default function Form() {
   //   }
   // };
 
+  const [formData, setFormData] = useState({
+    roomNumber: "",
+    operatingSystem: "windows",
+    isSocketMounted: true,
+    wasInternetWorking: false,
+    problemDescription: "",
+  });
+
+  // function handleChange(event) {
+  //   const { field, value } = event.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     [field]: value,
+  //   }));
+
+  //   console.log(formData);
+  // }
+
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+    // console.log(formData);
+  };
+
+  const handleChangeChoiceBox = (field, value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
+    // console.log(formData);
+  };
+
   const fetchData = async () => {
     try {
       const response = await axios.post(
@@ -29,17 +64,25 @@ export default function Form() {
     fetchData();
   };
 
+  console.log(formData);
+
   return (
     <form action="" className="form-holder" onSubmit={handleSubmit}>
       <div className="form-segment">
-        <label htmlFor="room">Number pokoju:</label>
-        <input type="text" id="room" placeholder="303A" />
+        <label htmlFor="roomNumber">Number pokoju:</label>
+        <input
+          type="text"
+          id="roomNumber"
+          placeholder="303A"
+          value={formData.roomNumber}
+          onChange={handleChange}
+        />
       </div>
       {/* <label htmlFor="problem">Opisz krótko problem:</label>
         <input type="text" id="problem" placeholder="" /> */}
       <div className="form-segment">
-        <label htmlFor="system">System operacyjny: </label>
-        <select id="system">
+        <label htmlFor="operatingSystem">System operacyjny: </label>
+        <select id="operatingSystem" onChange={handleChange}>
           <option value="windows">Windows</option>
           <option value="macos">MacOs</option>
           <option value="linux">Linux</option>
@@ -48,20 +91,34 @@ export default function Form() {
         </select>
       </div>
       <div className="form-segment">
-        <label htmlFor="self">Czy gniazdko jest poprawnie zamątowane?</label>
-        <CheckBox />
+        <label htmlFor="isSocketMounted">
+          Czy gniazdko jest poprawnie zamątowane?
+        </label>
+        <CheckBox
+          field="isSocketMounted"
+          selected={formData.isSocketMounted}
+          onChange={handleChangeChoiceBox}
+        />
         {/* <input type="checkbox" id="self" /> */}
       </div>
       <div className="form-segment">
-        <label htmlFor="self">Czy Interent działał wcześniej?</label>
-        <CheckBox />
+        <label htmlFor="wasInternetWorking">
+          Czy Interent działał wcześniej?
+        </label>
+        <CheckBox
+          field="wasInternetWorking"
+          selected={formData.wasInternetWorking}
+          onChange={handleChangeChoiceBox}
+        />
         {/* <input type="checkbox" id="self" /> */}
       </div>
       <div className="form-segment description-segment">
-        <label htmlFor="opis">Opisz krótko problem:</label>
+        <label htmlFor="problemDescription">Opisz krótko problem:</label>
         <textarea
-          id="opis"
+          id="problemDescription"
           placeholder="Gniazdko nie ma wejścia Ethernet."
+          value={formData.problemDescription}
+          onChange={handleChange}
         ></textarea>
       </div>
       <button type="submit" id="submit-button">
@@ -71,25 +128,27 @@ export default function Form() {
   );
 }
 
-function CheckBox() {
-  const [option, setOption] = useState("no");
+function CheckBox({ field, selected, onChange }) {
+  // const [option, setOption] = useState("no");
 
   return (
     <div className="form-checkboxes">
       <span
-        id="form-chechbox-no"
-        className={`option ${option == "no" ? "selected" : ""}`}
+        id={field}
+        className={`option ${selected == false ? "selected" : ""}`}
         onClick={() => {
-          setOption("no");
+          onChange(field, false);
+          // setOption("no");
         }}
       >
         Nie
       </span>
       <span
-        id="form-chechbox-yes"
-        className={`option ${option == "yes" ? "selected" : ""}`}
+        id={field}
+        className={`option ${selected == true ? "selected" : ""}`}
         onClick={() => {
-          setOption("yes");
+          onChange(field, true);
+          // setOption("yes");
         }}
       >
         Tak

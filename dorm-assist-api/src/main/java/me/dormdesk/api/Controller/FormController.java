@@ -1,20 +1,34 @@
 package me.dormdesk.api.Controller;
 
+import me.dormdesk.api.model.FormData;
+import me.dormdesk.api.service.FormService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/form")
 public class FormController {
 
+    FormService service;
+
+    public FormController(FormService service) {
+        this.service = service;
+    }
+
     @CrossOrigin
     @GetMapping("/get")
-    public String test() {
-        return "Hello world!";
+    public List<FormData> test() {
+        return service.getReports();
     }
 
     @CrossOrigin
     @PostMapping("/post")
-    public String postTest(@RequestBody String test) {
-        return test;
+    public FormData postTest(@RequestBody FormData report) {
+        System.out.println(report);
+
+        System.out.println("Pokój: " + report.getRoomNumber());
+        service.sendToRepo(report);
+        return report;
     }
 }

@@ -12,6 +12,19 @@ export default function Form() {
   //   }
   // };
 
+  const pushData = async () => {
+    try {
+      axios({
+        method: "post",
+        url: "http://localhost:8080/api/form/post",
+        data: formData,
+        // formData,
+      });
+    } catch (error) {
+      console.error("Error posting data: ", error);
+    }
+  };
+
   const [formData, setFormData] = useState({
     roomNumber: "",
     operatingSystem: "windows",
@@ -51,7 +64,7 @@ export default function Form() {
     try {
       const response = await axios.post(
         "http://localhost:8080/api/form/post",
-        "post req z reacta testowy"
+        formData
       );
       console.log(response.data);
     } catch (error) {
@@ -61,7 +74,9 @@ export default function Form() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetchData();
+    // fetchData();
+    pushData();
+    console.log("Wysyła sie chyba");
   };
 
   console.log(formData);

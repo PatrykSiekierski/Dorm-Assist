@@ -8,4 +8,17 @@
   height: 80vh;
   max-height: 80vh;
   // height: max-content;
+
+  &__solved {
+    opacity: 0.3;
+  }
+
+  &__button {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-text;
+    color: white;
+    cursor: pointer;
+  }
 }

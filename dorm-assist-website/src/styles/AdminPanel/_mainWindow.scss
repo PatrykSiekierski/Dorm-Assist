@@ -1,0 +1,45 @@
+.report-viewer {
+  &__panel {
+    box-shadow: $box-shadow-normal;
+    margin-bottom: 2rem;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 1.4rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 1rem;
+      margin-block: 2rem;
+      margin-block-start: 7rem;
+      border: 0.2rem solid white;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 1rem;
+      box-sizing: border-box;
+      border: 0.2rem solid white;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+      border-radius: 1rem;
+      margin: 25%;
+    }
+
+    &__title {
+      padding-bottom: 1rem;
+      border-bottom: 2px solid $accent;
+    }
+
+    &__content {
+      //   height: fit-content;
+    }
+  }
+}

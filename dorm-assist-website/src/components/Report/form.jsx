@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import "../../styles/Report/_form.scss";
 
@@ -12,19 +13,6 @@ export default function Form() {
   //   }
   // };
 
-  const pushData = async () => {
-    try {
-      axios({
-        method: "post",
-        url: "http://localhost:8080/api/form/post",
-        data: formData,
-        // formData,
-      });
-    } catch (error) {
-      console.error("Error posting data: ", error);
-    }
-  };
-
   const [formData, setFormData] = useState({
     roomNumber: "",
     operatingSystem: "windows",
@@ -33,23 +21,12 @@ export default function Form() {
     problemDescription: "",
   });
 
-  // function handleChange(event) {
-  //   const { field, value } = event.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [field]: value,
-  //   }));
-
-  //   console.log(formData);
-  // }
-
   const handleChange = (event) => {
     const { id, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
       [id]: value,
     }));
-    // console.log(formData);
   };
 
   const handleChangeChoiceBox = (field, value) => {
@@ -57,29 +34,33 @@ export default function Form() {
       ...prevData,
       [field]: value,
     }));
-    // console.log(formData);
-  };
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/api/form/post",
-        formData
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error fetching data", error);
-    }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // fetchData();
+    if (formData.roomNumber.length < 2) return;
     pushData();
+    setFormData({
+      roomNumber: "",
+      operatingSystem: "windows",
+      isSocketMounted: true,
+      wasInternetWorking: false,
+      problemDescription: "",
+    });
     console.log("Wysyła sie chyba");
   };
 
-  console.log(formData);
+  const pushData = async () => {
+    try {
+      axios({
+        method: "post",
+        url: "http://localhost:8080/api/form/post",
+        data: formData,
+      });
+    } catch (error) {
+      console.error("Error posting data: ", error);
+    }
+  };
 
   return (
     <form action="" className="form-holder" onSubmit={handleSubmit}>
@@ -131,7 +112,7 @@ export default function Form() {
         <label htmlFor="problemDescription">Opisz krótko problem:</label>
         <textarea
           id="problemDescription"
-          placeholder="Gniazdko nie ma wejścia Ethernet."
+          placeholder="np. Gniazdko nie ma wejścia Ethernet."
           value={formData.problemDescription}
           onChange={handleChange}
         ></textarea>

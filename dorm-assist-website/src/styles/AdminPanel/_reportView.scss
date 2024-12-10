@@ -1,0 +1,13 @@
+.report-viewer__panel__report {
+  &__element {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &__right {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+}

@@ -5,6 +5,7 @@ import viteLogo from "/vite.svg";
 import Home from "./pages/home";
 import Report from "./pages/report";
 import "./App.css";
+import AdminPanel from "./pages/adminPanel";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="" element={<Home />} />
         <Route path="report" element={<Report />} />
+        <Route path="admin" element={<AdminPanel />} />
       </Routes>
     </BrowserRouter>
   );

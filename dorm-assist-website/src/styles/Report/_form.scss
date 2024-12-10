@@ -2,8 +2,6 @@
 
 .form-holder {
   padding: 1rem 2rem 1.5rem !important;
-  // width: calc(70vw + 2rem);
-  // width: calc(85vw + 2rem);
   justify-items: left;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -21,7 +19,6 @@
 
   .form-checkboxes {
     display: flex;
-    // gap: 0.5rem;
     width: fit-content;
     border: 1px solid $main-text;
     border-radius: 1rem;
@@ -45,13 +42,11 @@
   }
 
   label {
-    // width: 100%;
     display: block;
   }
 
   input,
   select {
-    // color: $accent;
     border: 1px $main-text solid;
     padding: 0.2rem;
     border-radius: 0.5rem;
@@ -63,19 +58,17 @@
     &[type="checkbox"] {
       appearance: none;
       -webkit-appearance: none;
-      width: 1rem; /* Rozmiar checkboxa */
+      width: 1rem;
       height: 1rem;
-      border: 1px solid $main-text; /* Kolor ramki */
+      border: 1px solid $main-text;
       border-radius: 4px;
       padding: 0.5rem;
       position: relative;
       cursor: pointer;
     }
 
-    /* Styl zaznaczenia */
     &[type="checkbox"]:checked {
-      background-color: $accent; /* Kolor tła przy zaznaczeniu */
-      //   border-color: $main-text;
+      background-color: $accent;
     }
 
     &[type="checkbox"]:checked::before {
@@ -85,7 +78,6 @@
       left: 50%;
       transform: translate(-50%, -50%);
       color: white;
-      //   font-size: 16px;
     }
   }
 }

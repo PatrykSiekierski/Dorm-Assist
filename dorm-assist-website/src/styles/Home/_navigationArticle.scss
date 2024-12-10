@@ -1,8 +1,6 @@
-@import "../General/variables.scss";
+@import "../General/variables";
 
 #Navigation-Article {
-  //   width: 80vw;
-
   padding: 5vh 10vw 5vh 10vw;
   align-items: center;
   justify-content: center;
@@ -10,25 +8,14 @@
   margin-top: calc(1rem + 15vh);
 
   background: rgba(255, 187, 142, 0.25);
-  // background: linear-gradient(
-  //   165deg,
-  //   rgba(255, 160, 97, 0.3) 0%,
-  //   rgba(255, 231, 216, 0.1) 25%,
-  //   rgba(255, 187, 142, 0.5) 50%,
-  //   rgba(255, 160, 97, 0.1) 75%,
-  //   rgba(255, 160, 97, 0.3) 100%
-  // );
-  //   display: flex;
 }
 
 #navigation-main-content {
-  //   width: 100%;
   display: flex;
   gap: 2rem;
   margin-top: 2rem;
   align-items: center;
   transition: 0.35s;
-  //   justify-content: space-between;
 }
 
 #option-container {
@@ -38,9 +25,6 @@
   width: 15rem;
   min-width: 15rem;
   gap: 1rem;
-  //   :first-child {
-  //     margin-top: 0;
-  //   }
 
   button {
     width: 100%;
@@ -60,7 +44,6 @@
 #option-description {
   padding: 1rem;
   border-radius: 1rem;
-  // box-shadow: 0.3rem 0.3rem 1rem 0 rgba($main-text, 0.3);
   width: 100%;
 
   h3 {

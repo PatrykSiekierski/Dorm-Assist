@@ -16,7 +16,7 @@ export default function Form() {
   const [formData, setFormData] = useState({
     roomNumber: "",
     operatingSystem: "windows",
-    isSocketMounted: true,
+    socketMounted: true,
     wasInternetWorking: false,
     problemDescription: "",
   });
@@ -43,10 +43,11 @@ export default function Form() {
     setFormData({
       roomNumber: "",
       operatingSystem: "windows",
-      isSocketMounted: true,
+      socketMounted: true,
       wasInternetWorking: false,
       problemDescription: "",
     });
+    console.log(formData);
     console.log("Wysyła sie chyba");
   };
 
@@ -87,12 +88,12 @@ export default function Form() {
         </select>
       </div>
       <div className="form-segment">
-        <label htmlFor="isSocketMounted">
+        <label htmlFor="socketMounted">
           Czy gniazdko jest poprawnie zamątowane?
         </label>
         <CheckBox
-          field="isSocketMounted"
-          selected={formData.isSocketMounted}
+          field="socketMounted"
+          selected={formData.socketMounted}
           onChange={handleChangeChoiceBox}
         />
         {/* <input type="checkbox" id="self" /> */}

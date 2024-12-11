@@ -14,7 +14,7 @@ public class FormData {
     private int id;
     private String roomNumber;
     private String operatingSystem;
-    private boolean isSocketMounted;
+    private boolean socketMounted;
     private boolean wasInternetWorking;
     private String problemDescription;
     private boolean isSolved = false;
@@ -28,7 +28,7 @@ public class FormData {
         return "FormData{" +
                 "roomNumber='" + roomNumber + '\'' +
                 ", operatingSystem='" + operatingSystem + '\'' +
-                ", isSocketMounted=" + isSocketMounted +
+                ", isSocketMounted=" + socketMounted +
                 ", wasInternetWorking=" + wasInternetWorking +
                 ", problemDescription='" + problemDescription + '\'' +
                 '}';
@@ -37,30 +37,14 @@ public class FormData {
     public FormData() {
     }
 
-    public FormData(String roomNumber, String operatingSystem, boolean isSocketMounted, boolean wasInternetWorking, String problemDescription) {
-        this.roomNumber = roomNumber;
-        this.operatingSystem = operatingSystem;
-        this.isSocketMounted = isSocketMounted;
-        this.wasInternetWorking = wasInternetWorking;
-        this.problemDescription = problemDescription;
-    }
-
-    public FormData(int id, String roomNumber, String operatingSystem, boolean isSocketMounted, boolean wasInternetWorking, String problemDescription) {
+    public FormData(int id, String roomNumber, String operatingSystem, boolean socketMounted, boolean wasInternetWorking, String problemDescription, boolean isSolved, LocalDateTime createdAt) {
         this.id = id;
         this.roomNumber = roomNumber;
         this.operatingSystem = operatingSystem;
-        this.isSocketMounted = isSocketMounted;
+        this.socketMounted = socketMounted;
         this.wasInternetWorking = wasInternetWorking;
         this.problemDescription = problemDescription;
-    }
-
-    public FormData(int id, String roomNumber, String operatingSystem, boolean isSocketMounted, boolean wasInternetWorking, String problemDescription, LocalDateTime createdAt) {
-        this.id = id;
-        this.roomNumber = roomNumber;
-        this.operatingSystem = operatingSystem;
-        this.isSocketMounted = isSocketMounted;
-        this.wasInternetWorking = wasInternetWorking;
-        this.problemDescription = problemDescription;
+        this.isSolved = isSolved;
         this.createdAt = createdAt;
     }
 
@@ -89,11 +73,11 @@ public class FormData {
     }
 
     public boolean isSocketMounted() {
-        return isSocketMounted;
+        return socketMounted;
     }
 
     public void setSocketMounted(boolean socketMounted) {
-        isSocketMounted = socketMounted;
+        this.socketMounted = socketMounted;
     }
 
     public boolean isWasInternetWorking() {

@@ -17,50 +17,165 @@
       flex-direction: row;
       gap: 2rem;
     }
+  }
 
-    &__details {
-      animation: slideDown 0.6s ease forwards;
-      box-shadow: $box-shadow-normal;
+  &__details {
+    animation: slideDown 0.6s ease forwards;
+    box-shadow: $box-shadow-normal;
+    border-radius: 1rem;
+    overflow-y: auto;
+    max-height: 10rem;
+    opacity: 1;
+    padding: 0.5rem;
+    margin: 1rem 0;
+
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 2rem;
+
+    p {
+      margin: 0;
+    }
+
+    &__base-info {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    &__elements {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
       border-radius: 1rem;
-      padding: 0.5rem;
-      margin: 1rem 0;
-      height: 5rem;
+      padding: 0.7rem;
+      // min-width: 14rem;
+      // border: 1px solid #555;
+
+      > input[type="checkbox"] {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      &:nth-child(2n) {
+        background-color: $subtle-background-color;
+      }
+    }
+
+    &__secondary-info {
+      flex-grow: 3;
+      > textarea {
+        box-sizing: border-box;
+        background-color: $subtle-background-color;
+        border: 1px solid $accent;
+        border-radius: 1rem;
+        padding: 0.5rem;
+        margin: 0.5rem 0.5rem 0.5rem 0;
+        width: calc(100% - 0.5rem);
+
+        &:focus {
+          border: 1px solid $accent;
+        }
+
+        &::-webkit-scrollbar {
+          width: 1.4rem;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 1rem;
+          // margin-block: 0rem;
+          // margin-block-start: 7rem;
+          border: 0.2rem solid white;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 1rem;
+          box-sizing: border-box;
+          border: 0.2rem solid white;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background: #555;
+          border-radius: 1rem;
+          margin: 25%;
+        }
+      }
+    }
+
+    &__submitting {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+
+      > input[type="checkbox"] {
+        width: 1rem;
+        height: 1rem;
+        margin-left: 1rem;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 1.4rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 1rem;
+      // margin-block: 0rem;
+      // margin-block-start: 7rem;
+      border: 0.2rem solid white;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 1rem;
+      box-sizing: border-box;
+      border: 0.2rem solid white;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+      border-radius: 1rem;
+      margin: 25%;
+    }
+  }
+
+  &__details.report-viewer__hidden {
+    animation: slideUp 0.6s ease forwards;
+  }
+
+  @keyframes slideDown {
+    from {
+      max-height: 0;
+      opacity: 0;
+      padding: 0;
+      margin: 0;
+    }
+    to {
+      max-height: 50rem;
       opacity: 1;
-      overflow: hidden;
+      // padding: 0.5rem;
+      // margin: 1rem 0;
     }
+  }
 
-    &__details.report-viewer__hidden {
-      animation: slideUp 0.6s ease forwards;
+  @keyframes slideUp {
+    from {
+      max-height: 50rem;
+      opacity: 1;
+      // padding: 0.5rem;
+      // margin: 1rem 0;
     }
-
-    @keyframes slideDown {
-      from {
-        padding: 0;
-        margin: 0;
-        height: 0;
-        opacity: 0;
-      }
-      to {
-        padding: 0.5rem;
-        height: 5rem;
-        margin: 1rem 0;
-        opacity: 1;
-      }
-    }
-
-    @keyframes slideUp {
-      from {
-        height: 5rem;
-        padding: 0.5rem;
-        margin: 1rem 0;
-        opacity: 1;
-      }
-      to {
-        margin: 0;
-        height: 0;
-        padding: 0;
-        opacity: 0;
-      }
+    to {
+      max-height: 0;
+      opacity: 0;
+      padding: 0;
+      margin: 0;
     }
   }
 }

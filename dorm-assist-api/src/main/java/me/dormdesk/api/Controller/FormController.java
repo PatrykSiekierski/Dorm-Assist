@@ -18,7 +18,7 @@ public class FormController {
 
     @CrossOrigin
     @GetMapping("/get")
-    public List<FormData> test() {
+    public List<FormData> getReports() {
         return service.getReports();
     }
 
@@ -30,5 +30,12 @@ public class FormController {
         System.out.println("Pokój: " + report.getRoomNumber());
         service.sendToRepo(report);
         return report;
+    }
+
+    @CrossOrigin
+    @PutMapping("/update/solved")
+    public void updateForms(@RequestBody FormData report) {
+        service.updateForms(report);
+        System.out.println(report);
     }
 }

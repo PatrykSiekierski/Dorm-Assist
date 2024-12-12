@@ -26,15 +26,27 @@ public class FormData {
     @Override
     public String toString() {
         return "FormData{" +
-                "roomNumber='" + roomNumber + '\'' +
+                "id=" + id +
+                ", roomNumber='" + roomNumber + '\'' +
                 ", operatingSystem='" + operatingSystem + '\'' +
-                ", isSocketMounted=" + socketMounted +
+                ", socketMounted=" + socketMounted +
                 ", wasInternetWorking=" + wasInternetWorking +
                 ", problemDescription='" + problemDescription + '\'' +
+                ", isSolved=" + isSolved +
+                ", createdAt=" + createdAt +
                 '}';
     }
 
     public FormData() {
+    }
+
+    public FormData(int id, String roomNumber, String operatingSystem, boolean socketMounted, boolean wasInternetWorking, String problemDescription) {
+        this.id = id;
+        this.roomNumber = roomNumber;
+        this.operatingSystem = operatingSystem;
+        this.socketMounted = socketMounted;
+        this.wasInternetWorking = wasInternetWorking;
+        this.problemDescription = problemDescription;
     }
 
     public FormData(int id, String roomNumber, String operatingSystem, boolean socketMounted, boolean wasInternetWorking, String problemDescription, boolean isSolved, LocalDateTime createdAt) {

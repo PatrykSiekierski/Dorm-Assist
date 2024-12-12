@@ -21,28 +21,30 @@ export default function ReportsView() {
     fetchReports();
   }, []);
 
-  //   console.log(reports);
+  const unSolvedReports = reports.filter((report) => !report.solved && report);
+  const solvedReports = reports.filter((report) => report.solved && report);
 
   return (
     <div className="report-viewer__panel__report">
-      {reports.map((report) => (
+      {unSolvedReports.map((report) => (
         <ReportElement
           key={report.id}
           report={report}
-          // roomNumber={report.roomNumber}
-          // createdAt={report.createdAt}
-          // isSolved={report.isSolved}
+          setReports={setReports}
+        />
+      ))}
+      {solvedReports.map((report) => (
+        <ReportElement
+          key={report.id}
+          report={report}
+          setReports={setReports}
         />
       ))}
     </div>
   );
 }
 
-function ReportElement({ report }) {
-  //operatingSystem
-  //wasInternetWorking
-  //problemDescription
-  //socketMounted
+function ReportElement({ report, setReports }) {
   const [areDetailsShown, setAreDetailsShown] = useState(false);
 
   let date;
@@ -59,11 +61,42 @@ function ReportElement({ report }) {
     setAreDetailsShown(!areDetailsShown);
   }
 
+  function onChange(event) {
+    let isChecked = event.target.checked;
+
+    setReports((prev) =>
+      prev.map((element) =>
+        element.id !== report.id ? element : { ...element, solved: isChecked }
+      )
+    );
+    let newValue = { ...report, solved: isChecked };
+    // console.log(newValue);
+    updateSolved(newValue);
+  }
+
+  async function updateSolved(newValue) {
+    try {
+      const updating = await axios
+        .put("http://localhost:8080/api/form/update/solved", newValue)
+        .then(function (response) {
+          console.log(response);
+          // setReports(response.data);
+          //   return response;
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   return (
-    <div className="report-viewer__panel__report__element-container">
+    <div
+      className={`report-viewer__panel__report__element-container ${
+        report.solved && "report-viewer__solved"
+      }`}
+    >
       <div
         className={`report-viewer__panel__report__element ${
-          report.isSolved && "report-viewer__solved"
+          report.solved && "report-viewer__solved"
         }`}
       >
         <p>{report.roomNumber}</p>
@@ -120,7 +153,8 @@ function ReportElement({ report }) {
               type="checkbox"
               name="socket"
               id=""
-              readOnly={true}
+              // readOnly={true}
+              onChange={(e) => onChange(e)}
               checked={report.solved}
             />
             <p>Wykonane:</p>

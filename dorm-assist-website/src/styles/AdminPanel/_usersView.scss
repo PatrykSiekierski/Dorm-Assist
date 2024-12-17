@@ -1,0 +1,19 @@
+.report-viewer__panel {
+  &__users {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__user {
+    display: flex;
+    flex-direction: row;
+    // gap: 2rem;
+    justify-content: space-between;
+
+    > div {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+}

@@ -17,11 +17,13 @@ public class UserController {
         this.service = service;
     }
 
+    @CrossOrigin
     @GetMapping("/get")
     public List<UserData> getUsers() {
         return service.getUsers();
     }
 
+    @CrossOrigin
     @PostMapping("/create")
     public UserData createUsers(@RequestBody UserData newUser) {
         service.createUser(newUser);

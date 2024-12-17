@@ -4,9 +4,21 @@ export default function CategoryPanel({
 }) {
   return (
     <div className="category-panel">
-      <Category key={1} title={"Złoszenia"} />
-      <Category key={2} title={"Użytkownicy"} />
-      <Category key={3} title={"Historia"} />
+      <Category
+        key={1}
+        title={"Zgłoszenia"}
+        setSelectedCategory={setSelectedCategory}
+      />
+      <Category
+        key={2}
+        title={"Użytkownicy"}
+        setSelectedCategory={setSelectedCategory}
+      />
+      <Category
+        key={3}
+        title={"Historia"}
+        setSelectedCategory={setSelectedCategory}
+      />
     </div>
   );
 }

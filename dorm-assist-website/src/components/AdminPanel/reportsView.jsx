@@ -45,7 +45,7 @@ export default function ReportsView() {
 }
 
 function ReportElement({ report, setReports }) {
-  const [areDetailsShown, setAreDetailsShown] = useState(false);
+  const [areDetailsvisible, setAreDetailsvisible] = useState();
 
   let date;
   let time;
@@ -58,7 +58,8 @@ function ReportElement({ report, setReports }) {
   }
 
   function toggleDetails() {
-    setAreDetailsShown(!areDetailsShown);
+    if (areDetailsvisible == null) setAreDetailsvisible(true);
+    setAreDetailsvisible(!areDetailsvisible);
   }
 
   function onChange(event) {
@@ -112,7 +113,11 @@ function ReportElement({ report, setReports }) {
       </div>
       <div
         className={`report-viewer__panel__report__details ${
-          !areDetailsShown ? "report-viewer__hidden" : ""
+          areDetailsvisible ? "report-viewer__visible" : ""
+        }${
+          !areDetailsvisible && areDetailsvisible != null
+            ? "report-viewer__hidden"
+            : ""
         }`}
       >
         <div className="report-viewer__panel__report__details__base-info">

@@ -1,9 +1,15 @@
 .report-viewer__panel__report {
   &__element-container {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem;
+    border-radius: 1rem;
 
     &:last-child {
       margin-bottom: 0;
+    }
+
+    &:nth-child(2n + 2) {
+      background-color: $subtle-background-color;
     }
   }
 
@@ -11,6 +17,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding-left: 1rem;
 
     &__right {
       display: flex;

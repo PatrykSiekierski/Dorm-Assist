@@ -19,10 +19,10 @@ export default function Navbar() {
       </ul>
       <ul>
         <li>
-          <a>Login</a>
+          <a href="/login">Login</a>
         </li>
         <li className="border-special">
-          <a>Sign up</a>
+          <a href="/register">Sign up</a>
         </li>
       </ul>
     </nav>

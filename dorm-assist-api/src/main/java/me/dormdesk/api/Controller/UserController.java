@@ -3,6 +3,7 @@ package me.dormdesk.api.Controller;
 import me.dormdesk.api.model.UserData;
 import me.dormdesk.api.service.FormService;
 import me.dormdesk.api.service.UserService;
+import me.dormdesk.api.util.RegistrationResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,8 +26,7 @@ public class UserController {
 
     @CrossOrigin
     @PostMapping("/create")
-    public UserData createUsers(@RequestBody UserData newUser) {
-        service.createUser(newUser);
-        return newUser;
+    public RegistrationResponse createUsers(@RequestBody UserData newUser) {
+        return service.createUser(newUser);
     }
 }

@@ -1,0 +1,37 @@
+.register-page {
+  display: flex;
+
+  &__left {
+    flex: 1 1 0;
+  }
+
+  &__right {
+    flex: 1 1 0;
+  }
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__element {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      border: 1px #642a037d solid;
+      padding: 0.5rem 0.25rem;
+      border-radius: 0.5rem;
+      //   width: 100re,m;
+
+      &[type="text"] {
+        background-color: blue;
+      }
+    }
+  }
+}
+
+.error-message {
+  color: rgb(255, 40, 112);
+}

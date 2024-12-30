@@ -7,13 +7,24 @@ export default function LoginForm() {
   };
 
   return (
-    <div>
-      <p>login Form</p>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register("username")} />
-        <input {...register("password")} />
-        <input type="submit" />
-      </form>
+    <div className="register-page">
+      <div className="register-page__left">
+        <p>login Form</p>
+        <form onSubmit={handleSubmit(onSubmit)} className="register-form">
+          <div className="register-form__element">
+            <label htmlFor="">Username</label>
+            <input {...register("username")} />
+          </div>
+          <div className="register-form__element">
+            <label htmlFor="">Password</label>
+            <input {...register("password")} />
+          </div>
+          <input type="submit" />
+        </form>
+      </div>
+      <div className="register-page__left">
+        <p>right</p>
+      </div>
     </div>
   );
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/form")
+@RequestMapping("/form")
 public class FormController {
 
     FormService service;
@@ -17,13 +17,13 @@ public class FormController {
     }
 
     @CrossOrigin
-    @GetMapping("/get")
+    @GetMapping("/admin/get")
     public List<FormData> getReports() {
         return service.getReports();
     }
 
     @CrossOrigin
-    @PostMapping("/post")
+    @PostMapping("/admin/post")
     public FormData postTest(@RequestBody FormData report) {
         System.out.println(report);
 
@@ -33,7 +33,7 @@ public class FormController {
     }
 
     @CrossOrigin
-    @PutMapping("/update/solved")
+    @PutMapping("/admin/update/solved")
     public void updateForms(@RequestBody FormData report) {
         service.updateForms(report);
         System.out.println(report);

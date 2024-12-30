@@ -19,7 +19,7 @@ public class UserController {
     }
 
     @CrossOrigin
-    @GetMapping("/get")
+    @GetMapping("/admin/get")
     public List<UserData> getUsers() {
         return service.getUsers();
     }

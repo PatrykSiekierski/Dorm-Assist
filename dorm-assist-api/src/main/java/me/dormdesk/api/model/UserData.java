@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
-@Entity
+@Table(name = "users")
 public class UserData {
 
     @Id
@@ -17,7 +17,7 @@ public class UserData {
     private String username;
     private String password;
     private String dormId;
-
+    private String role;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;
@@ -38,6 +38,16 @@ public class UserData {
         this.username = username;
         this.password = password;
         this.dormId = dormId;
+        this.createdAt = createdAt;
+    }
+
+    public UserData(int id, String email, String username, String password, String dormId, String role, LocalDateTime createdAt) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.dormId = dormId;
+        this.role = role;
         this.createdAt = createdAt;
     }
 
@@ -91,6 +101,14 @@ public class UserData {
 
     public void setDormId(String dormId) {
         this.dormId = dormId;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public LocalDateTime getCreatedAt() {

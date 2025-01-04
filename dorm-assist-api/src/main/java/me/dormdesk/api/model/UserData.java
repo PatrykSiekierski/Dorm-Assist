@@ -7,12 +7,14 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
+@Entity
 @Table(name = "users")
 public class UserData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "e-mail")
     private String email;
     private String username;
     private String password;

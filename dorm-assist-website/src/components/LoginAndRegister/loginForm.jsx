@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     loginAndGetToken(data);
   };
@@ -17,20 +19,14 @@ export default function LoginForm() {
         data: body,
       });
 
-      const token = tokenData.data;
-      localStorage.setItem("token", token);
-      // console.log("Token: " + token);
+      // console.log(tokenData.headers.get("Content-Type"));
+      if (!tokenData.headers.get("Content-Type").includes("html")) {
+        const token = tokenData.data;
+        localStorage.setItem("token", token);
+        console.log("Token: " + token);
+      }
 
-      // const newErrors = { email: "", username: "" };
-      // if (postUsers.data.status === "error") {
-      //   if (postUsers.data.message.includes("email")) {
-      //     newErrors.email = postUsers.data.message; // Assign email error
-      //   }
-      //   if (postUsers.data.message.includes("username")) {
-      //     newErrors.username = postUsers.data.message; // Assign username error
-      //   }
-      // }
-      // setApiErrors(newErrors);
+      navigate("/");
     } catch (e) {
       console.log(e);
     }

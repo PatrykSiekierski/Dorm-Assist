@@ -32,12 +32,6 @@ public class UserController {
         return service.getUsers();
     }
 
-//    @CrossOrigin
-//    @PostMapping("/create")
-//    public RegistrationResponse createUsers(@RequestBody UserData newUser) {
-//        return service.createUser(newUser);
-//    }
-
     @CrossOrigin
     @PostMapping("/authenticate")
     public String authenticateAndGetToken(@RequestBody LoginForm loginForm) {

@@ -1,6 +1,23 @@
+import { useNavigate } from "react-router-dom";
 import "../../styles/General/_navbar.scss";
+import {
+  clearToken,
+  getUserRole,
+  isTokenValid,
+} from "../Utils/tokenUtility.js";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
+  const isUserLoggedIn = isTokenValid();
+  const role = getUserRole();
+
+  function logOut(event) {
+    event.preventDefault();
+    clearToken();
+    navigate("/");
+  }
+
   return (
     <nav>
       <a href="/">
@@ -18,12 +35,22 @@ export default function Navbar() {
         </li>
       </ul>
       <ul>
-        <li>
-          <a href="/login">Login</a>
-        </li>
-        <li className="border-special">
-          <a href="/register">Sign up</a>
-        </li>
+        {!isUserLoggedIn ? (
+          <>
+            <li>
+              <a href="/login">Login</a>
+            </li>
+            <li className="border-special">
+              <a href="/register">Sign up</a>
+            </li>
+          </>
+        ) : (
+          <li className="border-special">
+            <a href="/" onClick={logOut}>
+              Log out
+            </a>
+          </li>
+        )}
       </ul>
     </nav>
   );

@@ -6,14 +6,19 @@ export default function UsersView() {
 
   async function fetchReports() {
     try {
-      const fetching = await axios
-        .get("http://localhost:8080/users/get")
-        .then(function (response) {
-          setUsers(response.data);
-          //   console.log(response);
-          //   console.log(response.data);
-          //   return response;
-        });
+      const token = localStorage.getItem("token");
+
+      const response = await axios({
+        method: "get",
+        url: "http://localhost:8080/users/admin/get",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.data != null) {
+        setUsers(response.data);
+      }
     } catch (e) {
       console.log(e);
     }

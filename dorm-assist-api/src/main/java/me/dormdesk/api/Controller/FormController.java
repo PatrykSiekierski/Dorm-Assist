@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/form")
+@CrossOrigin()
 public class FormController {
 
     FormService service;
@@ -16,13 +17,11 @@ public class FormController {
         this.service = service;
     }
 
-    @CrossOrigin
     @GetMapping("/admin/get")
     public List<FormData> getReports() {
         return service.getReports();
     }
 
-    @CrossOrigin
     @PostMapping("/admin/post")
     public FormData postTest(@RequestBody FormData report) {
         System.out.println(report);
@@ -32,7 +31,6 @@ public class FormController {
         return report;
     }
 
-    @CrossOrigin
     @PutMapping("/admin/update/solved")
     public void updateForms(@RequestBody FormData report) {
         service.updateForms(report);

@@ -18,7 +18,7 @@ public class JwtService {
 
     //Temp secret
     private static final String SECRET = "D46EAC1036186C6490079172E518327D4C265BF8BF896FCF8B00D6B8B8D29A9EF5A9E91E6BE6D883C089C0CC1A3DE909E62427C87DB0CD32A35F63FA39ACFD5F";
-    private static final long VALIDITY = TimeUnit.MINUTES.toMillis(30);
+    private static final long VALIDITY = TimeUnit.MINUTES.toMillis(120);
 
     public String generateToken(UserDetails userData) {
         return Jwts.builder()

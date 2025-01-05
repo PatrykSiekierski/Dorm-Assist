@@ -5,13 +5,21 @@ export default function ReportsView() {
   const [reports, setReports] = useState([]);
 
   async function fetchReports() {
+    const token = localStorage.getItem("token");
+    // console.log("Token:" + token);
+
     try {
-      const fetching = await axios
-        .get("http://localhost:8080/api/form/get")
-        .then(function (response) {
-          setReports(response.data);
-          //   return response;
-        });
+      const response = await axios({
+        method: "get",
+        url: "http://localhost:8080/form/admin/get",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.data != null) {
+        setReports(response.data);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -78,7 +86,7 @@ function ReportElement({ report, setReports }) {
   async function updateSolved(newValue) {
     try {
       const updating = await axios
-        .put("http://localhost:8080/api/form/update/solved", newValue)
+        .put("http://localhost:8080/form/admin/update/solved", newValue)
         .then(function (response) {
           console.log(response);
           // setReports(response.data);

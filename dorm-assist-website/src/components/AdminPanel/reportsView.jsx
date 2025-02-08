@@ -1,33 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { getReports } from "./api";
 
-export default function ReportsView() {
+export default function ReportsView({ reloadTrigger }) {
   const [reports, setReports] = useState([]);
 
-  async function fetchReports() {
-    const token = localStorage.getItem("token");
-    // console.log("Token:" + token);
-
-    try {
-      const response = await axios({
-        method: "get",
-        url: "http://localhost:8080/form/admin/get",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (response.data != null) {
-        setReports(response.data);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   useEffect(() => {
-    fetchReports();
-  }, []);
+    setReports([]);
+    async function fetchData() {
+      let data = await getReports();
+      setReports(data);
+    }
+
+    fetchData();
+  }, [reloadTrigger]);
 
   const unSolvedReports = reports.filter((report) => !report.solved && report);
   const solvedReports = reports.filter((report) => report.solved && report);

@@ -27,15 +27,15 @@ export default function Navbar() {
   useEffect(() => {
     const verifyAdmin = async () => {
       const hasAdminAccess = await isAdmin(token);
-      if (!hasAdminAccess) {
-        navigate("/");
-      } else {
+      if (hasAdminAccess) {
         setVerified(true);
+      } else {
+        setVerified(false);
       }
     };
 
     verifyAdmin();
-  }, [navigate, token]);
+  }, []);
 
   return (
     <nav>

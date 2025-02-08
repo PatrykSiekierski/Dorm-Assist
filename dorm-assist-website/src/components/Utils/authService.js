@@ -1,13 +1,16 @@
 import axios from "axios";
 
 export async function isAdmin(token) {
+  const tokenn = localStorage.getItem("token");
   try {
-    const response = await axios.get("http://localhost:8080/users/admin/get", {
+    const response = await axios({
+      method: "get",
+      url: "http://localhost:8080/users/admin/verify",
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${tokenn}`,
       },
     });
-    return response.status === 200;
+    return response.data === true;
   } catch (error) {
     return false;
   }

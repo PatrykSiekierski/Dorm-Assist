@@ -26,6 +26,13 @@ public class UserController {
         this.jwtService = jwtService;
     }
 
+    //Temporary, so it can verify user permissions
+    @CrossOrigin
+    @GetMapping("/admin/verify")
+    public boolean verifyAdmin() {
+        return true;
+    }
+
     @CrossOrigin
     @GetMapping("/admin/get")
     public List<UserData> getUsers() {

@@ -42,3 +42,19 @@ export async function solvedReport(newValue) {
     return false;
   }
 }
+
+export async function sendReport(report) {
+  try {
+    const send = await axios({
+      method: "post",
+      url: "http://localhost:8080/form/admin/post",
+      data: report,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(send);
+  } catch (error) {
+    console.error("Error sending data: ", error);
+  }
+}

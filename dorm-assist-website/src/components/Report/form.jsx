@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import "../../styles/Report/_form.scss";
+import { sendReport } from "../AdminPanel/api";
 
 export default function Form() {
   // const fetchData = async () => {
@@ -52,15 +53,7 @@ export default function Form() {
   };
 
   const pushData = async () => {
-    try {
-      axios({
-        method: "post",
-        url: "http://localhost:8080/api/form/post",
-        data: formData,
-      });
-    } catch (error) {
-      console.error("Error posting data: ", error);
-    }
+    sendReport(formData);
   };
 
   return (

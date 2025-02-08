@@ -10,6 +10,7 @@ export async function isAdmin(token) {
         Authorization: `Bearer ${tokenn}`,
       },
     });
+    console.log(tokenn);
     return response.data === true;
   } catch (error) {
     return false;

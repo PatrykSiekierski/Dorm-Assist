@@ -34,6 +34,5 @@ public class FormController {
     @PutMapping("/admin/update/solved")
     public void updateForms(@RequestBody FormData report) {
         service.updateForms(report);
-        System.out.println(report);
     }
 }

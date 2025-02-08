@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { getReports } from "./api";
+import { getReports, solvedReport } from "./api";
 
 export default function ReportsView({ reloadTrigger }) {
   const [reports, setReports] = useState([]);
@@ -65,22 +65,7 @@ function ReportElement({ report, setReports }) {
       )
     );
     let newValue = { ...report, solved: isChecked };
-    // console.log(newValue);
-    updateSolved(newValue);
-  }
-
-  async function updateSolved(newValue) {
-    try {
-      const updating = await axios
-        .put("http://localhost:8080/form/admin/update/solved", newValue)
-        .then(function (response) {
-          console.log(response);
-          // setReports(response.data);
-          //   return response;
-        });
-    } catch (e) {
-      console.log(e);
-    }
+    solvedReport(newValue);
   }
 
   return (

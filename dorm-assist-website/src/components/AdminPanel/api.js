@@ -2,14 +2,6 @@ import axios from "axios";
 
 const token = localStorage.getItem("token");
 
-export async function getReports() {
-  return await fetchData("http://localhost:8080/form/admin/get");
-}
-
-export async function getUsers() {
-  return await fetchData("http://localhost:8080/users/admin/get");
-}
-
 async function fetchData(link) {
   try {
     const response = await axios({
@@ -24,5 +16,29 @@ async function fetchData(link) {
   } catch (error) {
     console.error("Error fetching data: ", error);
     return [];
+  }
+}
+
+export async function getReports() {
+  return await fetchData("http://localhost:8080/form/admin/get");
+}
+
+export async function getUsers() {
+  return await fetchData("http://localhost:8080/users/admin/get");
+}
+
+export async function solvedReport(newValue) {
+  try {
+    const update = await axios({
+      method: "put",
+      url: "http://localhost:8080/form/admin/update/solved",
+      data: newValue,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+    return false;
   }
 }

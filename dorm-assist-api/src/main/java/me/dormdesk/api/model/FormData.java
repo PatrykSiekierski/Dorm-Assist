@@ -18,7 +18,6 @@ public class FormData {
     private boolean wasInternetWorking;
     private String problemDescription;
     private boolean isSolved = false;
-
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;

@@ -1,11 +1,12 @@
 import Navbar from "../components/Universal/navbar";
 import Footer from "../components/Universal/footer";
-import MainAdmin from "../components/AdminPanel/mainAdmin";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { isAdmin } from "../components/Utils/authService";
 import LoadingScreen from "../components/Utils/loadingScreen";
+import ContentPanel from "../components/Universal/Container/contentPanel";
+import MainWindow from "../components/AdminPanel/mainWindow";
 
 export default function AdminPanel() {
   const navigate = useNavigate();
@@ -25,6 +26,8 @@ export default function AdminPanel() {
     verifyAdmin();
   }, [navigate, token]);
 
+  const avilableCategories = ["Zgłoszenia", "Użytkownicy", "Historia"];
+
   if (verified) {
     return (
       <>
@@ -32,7 +35,10 @@ export default function AdminPanel() {
           <Navbar />
         </header>
         <main>
-          <MainAdmin />
+          <ContentPanel
+            avilableCategories={avilableCategories}
+            mainWindow={MainWindow}
+          />
         </main>
         <Footer />
       </>

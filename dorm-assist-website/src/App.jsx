@@ -9,6 +9,7 @@ import AdminPanel from "./pages/adminPanel";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import { clearToken, isTokenValid } from "./components/Utils/tokenUtility";
+import ProfileSettings from "./pages/profileSettings";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -28,6 +29,7 @@ function App() {
         <Route path="admin" element={<AdminPanel />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="settings" element={<ProfileSettings />} />
       </Routes>
     </BrowserRouter>
   );

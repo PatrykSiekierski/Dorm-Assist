@@ -20,6 +20,7 @@ export default function LoginForm() {
       });
 
       // console.log(tokenData.headers.get("Content-Type"));
+      console.log("hehehehhehehe");
       if (!tokenData.headers.get("Content-Type").includes("html")) {
         const token = tokenData.data;
         localStorage.setItem("token", token);

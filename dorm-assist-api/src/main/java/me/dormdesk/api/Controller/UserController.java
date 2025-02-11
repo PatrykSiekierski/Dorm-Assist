@@ -51,4 +51,10 @@ public class UserController {
             throw new UsernameNotFoundException("Invalid credentials");
         }
     }
+
+    @CrossOrigin
+    @DeleteMapping("/admin/delete")
+    public boolean deleteUser(@RequestBody UserData user) {
+        return service.deleteUser(user);
+    }
 }

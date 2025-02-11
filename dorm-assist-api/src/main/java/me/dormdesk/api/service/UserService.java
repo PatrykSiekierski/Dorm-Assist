@@ -73,4 +73,9 @@ public class UserService implements UserDetailsService {
         }
         return user.getRole().split(",");
     }
+
+    public boolean deleteUser(UserData user) {
+        repo.delete(user);
+        return false;
+    }
 }

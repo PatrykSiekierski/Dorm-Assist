@@ -28,7 +28,7 @@ export default function RegisterForm() {
     try {
       const postUsers = await axios({
         method: "post",
-        url: "http://localhost:8080/users/create",
+        url: "http://localhost:8080/registration/create",
         data: body,
       });
 

@@ -4,6 +4,7 @@ package me.dormdesk.api.config;
 import me.dormdesk.api.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
@@ -38,6 +39,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(registry -> {
                     registry.requestMatchers("/registration/**", "/users/authenticate").permitAll();
                     registry.requestMatchers("/users/admin/**").hasRole("ADMIN");
+                    registry.requestMatchers(HttpMethod.DELETE, "/users/admin/delete").authenticated();
                     registry.requestMatchers("/form/admin/**").hasRole("ADMIN");
                 })
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)

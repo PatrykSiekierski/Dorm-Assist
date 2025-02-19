@@ -1,9 +1,12 @@
 package me.dormdesk.api.Controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import me.dormdesk.api.model.LoginForm;
 import me.dormdesk.api.model.UserData;
+import me.dormdesk.api.model.UserPasswordChangeModel;
 import me.dormdesk.api.service.UserService;
 import me.dormdesk.api.webtoken.JwtService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -50,6 +53,13 @@ public class UserController {
         } else {
             throw new UsernameNotFoundException("Invalid credentials");
         }
+    }
+
+    @CrossOrigin
+    @PostMapping("changepassword")
+    public ResponseEntity<String> changePassword(@RequestBody UserPasswordChangeModel userPasswordChangeModel, HttpServletRequest request) {
+        String username = jwtService.getUsernameFromRequest(request);
+        return service.changePassword(username, userPasswordChangeModel);
     }
 
     @CrossOrigin

@@ -2,8 +2,10 @@ package me.dormdesk.api.service;
 
 import me.dormdesk.api.model.LoginForm;
 import me.dormdesk.api.model.UserData;
+import me.dormdesk.api.model.UserPasswordChangeModel;
 import me.dormdesk.api.repository.UserRepo;
 import me.dormdesk.api.webtoken.JwtService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,18 +17,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
 
     UserRepo repo;
-//    PasswordEncoder passwordEncoder;
+    PasswordEncoder passwordEncoder;
 
 
     public UserService(UserRepo repo) {
         this.repo = repo;
-//        this.passwordEncoder = passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<UserData> getUsers() {
@@ -72,6 +75,24 @@ public class UserService implements UserDetailsService {
             return new String[]{"USER"};
         }
         return user.getRole().split(",");
+    }
+
+    public ResponseEntity<String> changePassword(String username, UserPasswordChangeModel userPasswordChangeModel) {
+        Optional<UserData> user = repo.findByUsername(username);
+        if(!user.isPresent()) {
+            return ResponseEntity.badRequest().body("Could not find the user");
+        }
+
+        String userPassword = user.get().getPassword();
+        String userInputPassword = userPasswordChangeModel.getOldPassword();
+        String userInputNewPassword = userPasswordChangeModel.getNewPassword();
+        if (userPassword.equals(userInputPassword)) {
+            user.get().setPassword(passwordEncoder.encode(userInputNewPassword));
+            repo.save(user.get());
+            return ResponseEntity.ok("Success");
+        }
+
+        return ResponseEntity.badRequest().body("The original password is incorrect.");
     }
 
     public boolean deleteUser(UserData user) {

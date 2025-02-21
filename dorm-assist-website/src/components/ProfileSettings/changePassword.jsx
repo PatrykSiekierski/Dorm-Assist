@@ -1,4 +1,6 @@
+import axios from "axios";
 import { useForm } from "react-hook-form";
+import { PasswordForm, RepeatPasswordForm } from "../Utils/formsElements";
 
 export default function ChangePassword() {
   const {
@@ -6,69 +8,65 @@ export default function ChangePassword() {
     handleSubmit,
     watch,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("Submit password change: ", data);
+    const body = {
+      password: data.oldPassword,
+      dataToChange: data.newPassword,
+    };
+
+    registerNewAccount(body);
   };
+
+  async function registerNewAccount(body) {
+    const token = localStorage.getItem("token");
+    try {
+      const putData = await axios({
+        method: "put",
+        url: "http://localhost:8080/users/change/password",
+        data: body,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log(putData);
+      reset();
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="register-form">
       <div className="register-form__element">
-        <label htmlFor="old-password">Stare hasło:</label>
-        <input
-          id="old-password"
-          {...register("oldPassword", {
-            required: true,
-          })}
+        <PasswordForm
+          id={"oldPassword"}
+          register={register}
+          errors={errors}
+          elementName={"oldPassword"}
+          labelName={"Stare hasło:"}
         />
       </div>
       <div className="register-form__element">
-        <label htmlFor="new-password">Nowe Hasło:</label>
-        <input
-          id="new-password"
-          {...register("newPassword", {
-            required: true,
-            pattern: {
-              maxLength: 20,
-              minLength: 8,
-              validate: (value) => {
-                const hasNumber = /\d/; // Check for at least one number
-                const hasUpperCase = /[A-Z]/; // Check for at least one uppercase letter
-                const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/; // Check for at least one symbol
-                return (
-                  (hasNumber.test(value) &&
-                    hasUpperCase.test(value) &&
-                    hasSymbol.test(value)) ||
-                  "Hasło musi zawierać przynajmniej jedną cyfre, jedną dużą literę i jeden symbol."
-                );
-              },
-            },
-          })}
+        <PasswordForm
+          id={"newPassword"}
+          register={register}
+          errors={errors}
+          elementName={"newPassword"}
+          labelName={"Nowe hasło:"}
         />
       </div>
       <div className="register-form__element">
-        <label htmlFor="repeat-new-password">Powtórz nowe Hasło:</label>
-        <input
-          id="repeat-new-password"
-          {...register("repeatNewPassword", {
-            required: true,
-            validate: (val) => {
-              if (watch("newPassword") != val) {
-                return "Hasła nie pasują do siebie";
-              }
-            },
-          })}
+        <RepeatPasswordForm
+          register={register}
+          errors={errors}
+          watch={watch}
+          elementName={"repeatNewPassword"}
+          labelName={"Powtórz nowe Hasło:"}
         />
-        {errors.repeatNewPassword &&
-          errors.repeatNewPassword.type === "required" && (
-            <span className="error-message">To pole jest obowiązkowe</span>
-          )}
-        {errors.repeatNewPassword && errors.repeatNewPassword.message && (
-          <span className="error-message">
-            {errors.repeatNewPassword.message}
-          </span>
-        )}
       </div>
       <input type="submit" className="button" />
     </form>

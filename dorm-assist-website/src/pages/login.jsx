@@ -19,8 +19,6 @@ export default function LoginForm() {
         data: body,
       });
 
-      // console.log(tokenData.headers.get("Content-Type"));
-      console.log("hehehehhehehe");
       if (!tokenData.headers.get("Content-Type").includes("html")) {
         const token = tokenData.data;
         localStorage.setItem("token", token);
@@ -54,19 +52,3 @@ export default function LoginForm() {
     </div>
   );
 }
-
-// import Navbar from "../components/Universal/navbar";
-// import Footer from "../components/Universal/footer";
-// import LoginContainer from "../components/LoginAndRegister/loginContainer";
-
-// export default function Login() {
-//   return (
-//     <>
-//       {/* <Navbar /> */}
-//       <main>
-//         <LoginContainer page="login" />
-//       </main>
-//       <Footer />
-//     </>
-//   );
-// }

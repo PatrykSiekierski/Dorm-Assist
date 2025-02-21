@@ -1,5 +1,6 @@
 package me.dormdesk.api.Controller;
 
+import me.dormdesk.api.config.PasswordEncodingConfig;
 import me.dormdesk.api.model.UserData;
 import me.dormdesk.api.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,9 @@ public class RegistrationController {
     private UserRepo myUserRepository;
     private PasswordEncoder passwordEncoder;
 
-    public RegistrationController(UserRepo myUserRepository, PasswordEncoder passwordEncoder) {
+    public RegistrationController(UserRepo myUserRepository, PasswordEncodingConfig passwordEncoder) {
         this.myUserRepository = myUserRepository;
-        this.passwordEncoder = passwordEncoder;
+        this.passwordEncoder = passwordEncoder.passwordEncoder();
     }
 
     @CrossOrigin

@@ -3,7 +3,7 @@ package me.dormdesk.api.Controller;
 import jakarta.servlet.http.HttpServletRequest;
 import me.dormdesk.api.model.LoginForm;
 import me.dormdesk.api.model.UserData;
-import me.dormdesk.api.model.UserPasswordChangeModel;
+import me.dormdesk.api.model.UserChangeModel;
 import me.dormdesk.api.service.UserService;
 import me.dormdesk.api.webtoken.JwtService;
 import org.springframework.http.ResponseEntity;
@@ -56,15 +56,23 @@ public class UserController {
     }
 
     @CrossOrigin
-    @PostMapping("changepassword")
-    public ResponseEntity<String> changePassword(@RequestBody UserPasswordChangeModel userPasswordChangeModel, HttpServletRequest request) {
+    @PutMapping("/change/password")
+    public ResponseEntity<String> changePassword(@RequestBody UserChangeModel userChangeModel, HttpServletRequest request) {
         String username = jwtService.getUsernameFromRequest(request);
-        return service.changePassword(username, userPasswordChangeModel);
+        return service.changePassword(username, userChangeModel);
     }
 
     @CrossOrigin
-    @DeleteMapping("/admin/delete")
-    public boolean deleteUser(@RequestBody UserData user) {
-        return service.deleteUser(user);
+    @PutMapping("/change/username")
+    public ResponseEntity<String> changeUsername(@RequestBody UserChangeModel userChangeModel, HttpServletRequest request) {
+        String username = jwtService.getUsernameFromRequest(request);
+        return service.changeUsername(username, userChangeModel);
+    }
+
+    @CrossOrigin
+    @DeleteMapping("/change/delete")
+    public ResponseEntity<String> deleteUser(@RequestBody String password, HttpServletRequest request) {
+        String username = jwtService.getUsernameFromRequest(request);
+        return service.deleteUser(username, password);
     }
 }

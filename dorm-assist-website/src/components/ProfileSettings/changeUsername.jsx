@@ -16,7 +16,7 @@ export default function ChangeUsername() {
   const onSubmit = (data) => {
     const body = {
       password: data.password,
-      dataToChange: data.newUsername,
+      dataToChange: data.username,
     };
 
     registerNewAccount(body);

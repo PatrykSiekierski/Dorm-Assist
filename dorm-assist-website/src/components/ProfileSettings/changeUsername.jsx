@@ -2,6 +2,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { PasswordForm, UsernameForm } from "../Utils/formsElements";
 import { useState } from "react";
+import { loginAndGetToken } from "../Utils/authService";
 
 export default function ChangeUsername() {
   const [apiErrors, setApiErrors] = useState({ username: "" });
@@ -19,10 +20,10 @@ export default function ChangeUsername() {
       dataToChange: data.username,
     };
 
-    registerNewAccount(body);
+    changeUsername(body);
   };
 
-  async function registerNewAccount(body) {
+  async function changeUsername(body) {
     const token = localStorage.getItem("token");
     try {
       const putData = await axios({
@@ -33,14 +34,14 @@ export default function ChangeUsername() {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(putData);
 
       const newErrors = { username: "" };
       if (putData.data.status === "error") {
         if (putData.data.message.includes("username")) {
           newErrors.username = putData.data.message;
         }
-      } else {
+      } else if (putData.status === 200) {
+        loginAndGetToken(body.dataToChange, body.password);
         reset();
       }
       setApiErrors(newErrors);

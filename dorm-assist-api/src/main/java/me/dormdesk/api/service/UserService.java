@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -78,6 +79,9 @@ public class UserService implements UserDetailsService {
         if (verifyUser != null) return verifyUser;
 
         String userInputNewPassword = userChangeModel.getNewData();
+        if (Objects.equals(userInputNewPassword, "null") || userInputNewPassword == null) {
+            ResponseEntity.badRequest().body("New password is empty.");
+        }
         user.get().setPassword(passwordEncoder.encode(userInputNewPassword));
         repo.save(user.get());
 
@@ -91,6 +95,9 @@ public class UserService implements UserDetailsService {
         if (verifyUser != null) return verifyUser;
 
         String newUsername = userChangeModel.getNewData();
+        if (Objects.equals(newUsername, "null") || newUsername == null) {
+            ResponseEntity.badRequest().body("Username is empty");
+        }
         user.get().setUsername(newUsername);
         repo.save(user.get());
 

@@ -1,32 +1,26 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { loginAndGetToken } from "../components/Utils/authService";
+import { useState } from "react";
 
 export default function LoginForm() {
-  const { register, handleSubmit } = useForm();
+  const [credentialsState, setCredentialsState] = useState(false);
+  const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
   const onSubmit = (data) => {
-    loginAndGetToken(data);
+    handleLogin(data);
   };
 
-  async function loginAndGetToken(body) {
-    console.log(body);
+  async function handleLogin(data) {
+    const tokenData = await loginAndGetToken(data.username, data.password);
 
-    try {
-      const tokenData = await axios({
-        method: "post",
-        url: "http://localhost:8080/users/authenticate",
-        data: body,
-      });
-
-      if (!tokenData.headers.get("Content-Type").includes("html")) {
-        const token = tokenData.data;
-        localStorage.setItem("token", token);
-        console.log("Token: " + token);
-        navigate("/");
-      }
-    } catch (e) {
-      console.log(e);
+    if (tokenData != null) {
+      reset();
+      navigate("/");
+      setCredentialsState(false);
+    } else {
+      setCredentialsState(true);
     }
   }
 
@@ -43,6 +37,7 @@ export default function LoginForm() {
             <label htmlFor="">Password</label>
             <input {...register("password")} />
           </div>
+          {credentialsState ? <h3>Złe dane logowania</h3> : ""}
           <input type="submit" className="button" />
         </form>
       </div>

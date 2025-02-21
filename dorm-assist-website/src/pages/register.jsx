@@ -7,7 +7,7 @@ export default function Register() {
     <>
       <Navbar />
       <main>
-        <LoginContainer page="register" mainWindow={MainInterface} />
+        <LoginContainer page="register" />
       </main>
       <Footer />
     </>

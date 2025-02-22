@@ -1,11 +1,20 @@
 import LoginForm from "./loginForm";
-import RegisterForm from "./registerForm";
 
 export default function LoginContainer({ page }) {
   return (
-    <>{page == "login" ? <LoginForm /> : <RegisterForm />}</>
-    // <div className="border login-container">
-    // <p>Login Container</p>
-    // </div>
+    <section id="info-section">
+      <div className="grid-form border">
+        <div id="icon-side">
+          <img src="src/assets/form-icon.svg" alt="form icon" />
+          <h2>Nie masz konta?</h2>
+          <p>Stwórz nowe konto:</p>
+          <button className="button">Zarejestruj</button>
+        </div>
+        <div className="form-side">
+          <h2>Zgłoś problem:</h2>
+          <LoginForm />
+        </div>
+      </div>
+    </section>
   );
 }

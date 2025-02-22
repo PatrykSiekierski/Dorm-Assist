@@ -1,57 +1,40 @@
 import { useForm } from "react-hook-form";
-import axios from "axios";
-// import Navbar from "../components/Universal/navbar";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../Universal/navbar";
-// import Navbar from "../Universal/navbar";
+import { useState } from "react";
+import { loginAndGetToken } from "../Utils/authService";
 
 export default function LoginForm() {
-  // const { register, handleSubmit } = useForm();
-  // const navigate = useNavigate();
-  // const onSubmit = (data) => {
-  //   loginAndGetToken(data);
-  // };
+  const [credentialsState, setCredentialsState] = useState(false);
+  const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
+  const onSubmit = (data) => {
+    handleLogin(data);
+  };
 
-  // async function loginAndGetToken(body) {
-  //   console.log(body);
+  async function handleLogin(data) {
+    const tokenData = await loginAndGetToken(data.username, data.password);
 
-  //   try {
-  //     const tokenData = await axios({
-  //       method: "post",
-  //       url: "http://localhost:8080/users/authenticate",
-  //       data: body,
-  //     });
-
-  //     if (!tokenData.headers.get("Content-Type").includes("html")) {
-  //       const token = tokenData.data;
-  //       localStorage.setItem("token", token);
-  //       console.log("Token: " + token);
-  //     }
-
-  //     navigate("/");
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }
+    if (tokenData != null) {
+      reset();
+      navigate("/");
+      setCredentialsState(false);
+    } else {
+      setCredentialsState(true);
+    }
+  }
 
   return (
-    <div className="login-container">
-      <div className="login-functional">
-        <div className="login-navigation">
-          <h2>
-            <a href="/">Home</a>
-          </h2>
-        </div>
-        <div className="login-form">
-          <form action="">
-            <label htmlFor="">test</label>
-            <input type="text" />
-          </form>
-        </div>
+    <form onSubmit={handleSubmit(onSubmit)} className="register-form">
+      <div className="register-form__element">
+        <label htmlFor="">Username</label>
+        <input {...register("username")} />
       </div>
-      <div className="login-decorative">
-        <div className="login-decorative__img-container"></div>
+      <div className="register-form__element">
+        <label htmlFor="">Password</label>
+        <input {...register("password")} />
       </div>
-    </div>
+      {credentialsState ? <h3>Złe dane logowania</h3> : ""}
+      <input type="submit" className="button" />
+    </form>
   );
 }

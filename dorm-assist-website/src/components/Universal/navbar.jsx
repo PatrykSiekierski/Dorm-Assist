@@ -59,10 +59,10 @@ export default function Navbar() {
         {!isUserLoggedIn ? (
           <>
             <li>
-              <a href="/login">Login</a>
+              <a href="/login">Zaloguj</a>
             </li>
             <li className="border-special">
-              <a href="/register">Sign up</a>
+              <a href="/register">Zarejestruj</a>
             </li>
           </>
         ) : (

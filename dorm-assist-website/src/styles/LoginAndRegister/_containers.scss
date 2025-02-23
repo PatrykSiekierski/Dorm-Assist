@@ -1,0 +1,39 @@
+.authentication-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.decorative-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background: rgba(255, 187, 142, 0.25);
+  border-radius: 1rem 0 0 1rem;
+  padding: 2rem;
+  color: $main-text;
+
+  img {
+    max-width: 5rem;
+  }
+}
+
+.form-side {
+  h2 {
+    padding-left: 2rem !important;
+    margin-bottom: 0;
+  }
+}
+
+.form-holder {
+  padding: 1rem 2rem 1.5rem !important;
+  justify-items: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  justify-items: end;
+}

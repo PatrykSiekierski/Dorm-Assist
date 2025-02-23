@@ -5,6 +5,7 @@ import { loginAndGetToken } from "../Utils/authService";
 import { PasswordForm, UsernameForm } from "../Utils/formsElements";
 
 export default function LoginForm() {
+  const navigate = useNavigate();
   const [credentialsState, setCredentialsState] = useState(false);
   const {
     register,
@@ -12,7 +13,7 @@ export default function LoginForm() {
     formState: { errors },
     reset,
   } = useForm();
-  const navigate = useNavigate();
+
   const onSubmit = (data) => {
     handleLogin(data);
   };
@@ -30,15 +31,15 @@ export default function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="register-form">
-      <div className="register-form__element">
+    <form onSubmit={handleSubmit(onSubmit)} className="login-form">
+      <div className="login-form__element">
         <UsernameForm
           register={register}
           errors={errors}
           labelName={"Nazwa użytkownika"}
         />
       </div>
-      <div className="register-form__element">
+      <div className="login-form__element">
         <PasswordForm
           id={"password"}
           register={register}

@@ -2,6 +2,7 @@
 @import "styles/General/base";
 @import "styles/General/footer";
 @import "styles/General/navbar";
+@import "styles/General/FromUtils/inputs";
 @import "styles/Home/faqArticle";
 @import "styles/Home/mainArticle";
 @import "styles/Home/navigationArticle";
@@ -12,7 +13,7 @@
 @import "styles/AdminPanel/mainWindow";
 @import "styles/AdminPanel/reportView";
 @import "styles/AdminPanel/usersView";
-@import "styles/LoginAndRegister/loginContainer";
+@import "styles/LoginAndRegister/containers";
+@import "styles/LoginAndRegister/loginForm";
 @import "styles/LoginAndRegister/registerForm";
 @import "styles/utils/loadingScreen";
-@import "styles/General/FromUtils/inputs";

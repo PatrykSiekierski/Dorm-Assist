@@ -55,8 +55,8 @@ export default function RegisterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="form-holder">
-      <div className="form-segment">
+    <form onSubmit={handleSubmit(onSubmit)} className="register-form">
+      <div className="register-form__element">
         <EmailForm
           register={register}
           errors={errors}
@@ -64,7 +64,7 @@ export default function RegisterForm() {
           labelName={"Adres E-mail"}
         />
       </div>
-      <div className="form-segment">
+      <div className="register-form__element">
         <RegisterUsernameForm
           register={register}
           errors={errors}
@@ -72,7 +72,7 @@ export default function RegisterForm() {
           labelName={"Nazwa użytkownika:"}
         />
       </div>
-      <div className="form-segment">
+      <div className="register-form__element">
         <PasswordForm
           id={"password"}
           register={register}
@@ -81,7 +81,7 @@ export default function RegisterForm() {
           labelName={"Podaj hasło:"}
         />
       </div>
-      <div className="form-segment">
+      <div className="register-form__element">
         <RepeatPasswordForm
           register={register}
           errors={errors}
@@ -90,14 +90,14 @@ export default function RegisterForm() {
           labelName={"Powtórz hasło:"}
         />
       </div>
-      <div className="form-segment">
+      <div className="register-form__element">
         <RoomNumberForm
           register={register}
           errors={errors}
           labelName={"Number pokoju:"}
         />
       </div>
-      <div></div>
+      <div className="register-form__element"></div>
       <input type="submit" className="button" />
     </form>
   );

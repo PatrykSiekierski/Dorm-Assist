@@ -111,3 +111,16 @@ html {
 .none {
   display: none;
 }
+
+.error-message {
+  color: rgb(255, 40, 112);
+}
+
+.message {
+  width: fit-content;
+  padding: 0.3rem 1rem;
+  border-radius: 1rem;
+  background-color: rgb(255, 49, 107);
+  color: white;
+  text-align: center;
+}

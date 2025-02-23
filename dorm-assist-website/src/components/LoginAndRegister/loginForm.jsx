@@ -2,10 +2,16 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { loginAndGetToken } from "../Utils/authService";
+import { PasswordForm, UsernameForm } from "../Utils/formsElements";
 
 export default function LoginForm() {
   const [credentialsState, setCredentialsState] = useState(false);
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
   const navigate = useNavigate();
   const onSubmit = (data) => {
     handleLogin(data);
@@ -26,12 +32,20 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="register-form">
       <div className="register-form__element">
-        <label htmlFor="">Username</label>
-        <input {...register("username")} />
+        <UsernameForm
+          register={register}
+          errors={errors}
+          labelName={"Nazwa użytkownika"}
+        />
       </div>
       <div className="register-form__element">
-        <label htmlFor="">Password</label>
-        <input {...register("password")} />
+        <PasswordForm
+          id={"password"}
+          register={register}
+          errors={errors}
+          elementName={"password"}
+          labelName={"Hasło"}
+        />
       </div>
       {credentialsState ? <h3>Złe dane logowania</h3> : ""}
       <input type="submit" className="button" />

@@ -1,0 +1,80 @@
+.form-segment {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.form-checkboxes {
+  display: flex;
+  width: fit-content;
+  border: 1px solid $main-text;
+  border-radius: 1rem;
+
+  .option {
+    border-radius: 1rem 0 0 1rem;
+    padding: 0.4rem;
+    cursor: pointer;
+
+    transition: 0.35s;
+
+    &:last-child {
+      border-radius: 0 1rem 1rem 0;
+    }
+  }
+
+  .selected {
+    background-color: $main-text;
+    color: white;
+  }
+}
+
+label {
+  display: block;
+}
+
+select {
+  border: 1px $main-text solid;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+input {
+  &[type="text"],
+  &[type="password"],
+  &[type="checkbox"],
+  &[type="email"] {
+    border: 1px $main-text solid;
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+    width: 100%;
+  }
+
+  &[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid $main-text;
+    border-radius: 4px;
+    padding: 0.5rem;
+    position: relative;
+    cursor: pointer;
+  }
+
+  &[type="checkbox"]:checked {
+    background-color: $accent;
+  }
+
+  &[type="checkbox"]:checked::before {
+    content: "O";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+}

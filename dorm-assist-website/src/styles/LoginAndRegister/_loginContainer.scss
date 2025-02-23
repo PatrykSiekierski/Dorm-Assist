@@ -1,0 +1,81 @@
+// .login-container {
+//   display: flex;
+//   flex-direction: row;
+//   // width: calc(100vw - 17px - 4rem);
+//   width: 100vw;
+//   background-color: rgba(255, 187, 142, 0.25);
+
+//   & .login-form {
+//     // background-color: ;
+//   }
+// }
+
+// .login-functional {
+//   background-color: white;
+//   margin: 3rem;
+//   border-radius: 1rem;
+// }
+
+// .login-navigation {
+//   display: flex;
+//   flex-direction: row;
+//   width: 40vw;
+//   // height: 2rem;
+//   // margin-bottom: 2rem;
+//   padding: 1rem;
+
+//   & a {
+//     text-decoration: 0;
+//     color: $main-text;
+
+//     font-family: "PoppinMed", sans-serif;
+//     font-size: 1.2rem;
+
+//     cursor: pointer;
+//     display: inline;
+//     margin-right: 5vw;
+
+//     position: relative;
+
+//     &::before {
+//       content: "";
+//       position: absolute;
+//       width: 70%;
+//       bottom: -3px;
+//       left: 15%;
+//       border-bottom: 2px solid $main-text;
+
+//       transition: all 0.5s;
+//     }
+
+//     &:hover::before {
+//       transition: all 0.5s;
+//       width: 110%;
+//       left: -5%;
+
+//       border-bottom-color: $accent;
+//     }
+//   }
+// }
+
+// .login-decorative {
+//   overflow: hidden;
+//   padding: 2rem;
+//   &__img-container {
+//     border-radius: 2rem;
+//     background-image: url("src/assets/ds11.jpg");
+//     background-position: center;
+//     box-shadow: inset 0 0 5rem 0.1rem rgba(255, 187, 142, 1.25);
+//     height: 100vh;
+//     width: 60vw;
+//   }
+// }
+
+.message {
+  width: fit-content;
+  padding: 0.3rem 1rem;
+  border-radius: 1rem;
+  background-color: rgb(255, 49, 107);
+  color: white;
+  text-align: center;
+}

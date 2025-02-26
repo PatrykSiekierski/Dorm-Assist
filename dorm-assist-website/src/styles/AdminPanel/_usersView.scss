@@ -3,12 +3,14 @@
     display: flex;
     flex-direction: column;
   }
+
   &__user {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr auto;
     align-items: center;
     border-radius: 1rem;
-    padding: 0.3rem 1rem;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0.3rem 0.3rem 1.3rem;
 
     &:nth-child(even) {
       background-color: $subtle-background-color;
@@ -17,5 +19,14 @@
     > div {
       display: contents;
     }
+  }
+
+  button {
+    padding: 1rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-text;
+    color: white;
+    cursor: pointer;
   }
 }

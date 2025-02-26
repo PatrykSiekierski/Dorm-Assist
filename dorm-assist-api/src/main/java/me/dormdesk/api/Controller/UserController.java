@@ -43,6 +43,12 @@ public class UserController {
     }
 
     @CrossOrigin
+    @DeleteMapping("/admin/deletetarget")
+    public ResponseEntity<String> deleteTargetUser(@RequestBody String username) {
+        return service.deleteTargetUser(username);
+    }
+
+    @CrossOrigin
     @PostMapping("/authenticate")
     public String authenticateAndGetToken(@RequestBody LoginForm loginForm) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(

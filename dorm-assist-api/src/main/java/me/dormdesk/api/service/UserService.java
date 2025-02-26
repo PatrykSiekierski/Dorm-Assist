@@ -32,6 +32,16 @@ public class UserService implements UserDetailsService {
         return repo.findAll();
     }
 
+    public ResponseEntity<String> deleteTargetUser(String username) {
+        Optional<UserData> user = repo.findByUsername(username);
+        if (user.isEmpty()) {
+            return ResponseEntity.badRequest().body("The user with this username doesn't exist");
+        }
+
+        repo.delete(user.get());
+        return ResponseEntity.ok().body("The user has been deleted");
+    }
+
     // Password not yet use passwordEncoder for easier development. For change in near future.
 //    public RegistrationResponse createUser(UserData newUser) {
 //        List<UserData> allUsers = repo.findAll();

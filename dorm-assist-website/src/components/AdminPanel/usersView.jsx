@@ -30,8 +30,9 @@ function UserElement({ user }) {
       <div>
         <p>{user.username}</p>
         <p>{user.email}</p>
+        <p>{user.dormId}</p>
       </div>
-      <p>{user.dormId}</p>
+      <button className="report-viewer__button">Usuń</button>
     </div>
   );
 }

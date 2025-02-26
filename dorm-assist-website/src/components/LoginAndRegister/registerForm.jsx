@@ -30,7 +30,7 @@ export default function RegisterForm() {
   };
 
   async function registerNewAccount(body) {
-    console.log(body);
+    // console.log(body);
 
     try {
       const postUsers = await axios({
@@ -39,13 +39,19 @@ export default function RegisterForm() {
         data: body,
       });
 
+      console.log(postUsers);
+
       const newErrors = { email: "", username: "" };
-      if (postUsers.data.status === "error") {
-        if (postUsers.data.message.includes("email")) {
-          newErrors.email = postUsers.data.message;
+      if (postUsers.data) {
+        if (postUsers.data.includes("email")) {
+          newErrors.email = "Ten email jest już zajęty";
+          console.log("Email zły");
+          console.log(newErrors);
         }
-        if (postUsers.data.message.includes("username")) {
-          newErrors.username = postUsers.data.message;
+        if (postUsers.data.includes("username")) {
+          newErrors.username = "Ta nazwa użytkownika jest już zajęta";
+          console.log("username zły");
+          console.log(newErrors);
         }
       }
       setApiErrors(newErrors);

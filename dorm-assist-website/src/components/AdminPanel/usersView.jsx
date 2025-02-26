@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { getUsers } from "./api";
+import { deleteUser, getUsers } from "./api";
 
 export default function UsersView({ reloadTrigger }) {
   const [users, setUsers] = useState([]);
@@ -18,21 +18,26 @@ export default function UsersView({ reloadTrigger }) {
   return (
     <div className="report-viewer__panel__users">
       {users.map((user) => (
-        <UserElement key={user.id} user={user} />
+        <UserElement key={user.id} user={user} setUsers={setUsers} />
       ))}
     </div>
   );
 }
 
-function UserElement({ user }) {
+function UserElement({ user, setUsers }) {
+  function deleteTarget() {
+    setUsers((prev) => prev.filter((item) => item != user));
+    deleteUser(user.username);
+  }
+
   return (
     <div className="report-viewer__panel__user">
       <div>
         <p>{user.username}</p>
         <p>{user.email}</p>
-        <p>{user.dormId}</p>
+        <p>{user.roomNumber}</p>
       </div>
-      <button className="report-viewer__button">Usuń</button>
+      <button onClick={deleteTarget}>Usuń</button>
     </div>
   );
 }

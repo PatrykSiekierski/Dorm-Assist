@@ -58,3 +58,19 @@ export async function sendReport(report) {
     console.error("Error sending data: ", error);
   }
 }
+
+export async function deleteUser(username) {
+  try {
+    const send = await axios({
+      method: "delete",
+      url: "http://localhost:8080/users/admin/deletetarget",
+      data: username,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(send);
+  } catch (error) {
+    console.error("Error sending data: ", error);
+  }
+}

@@ -18,7 +18,7 @@ public class UserData {
     private String email;
     private String username;
     private String password;
-    private String dormId;
+    private String roomNumber;
     private String role;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -31,7 +31,7 @@ public class UserData {
         this.email = email;
         this.username = username;
         this.password = password;
-        this.dormId = dormId;
+        this.roomNumber = dormId;
     }
 
     public UserData(int id, String email, String username, String password, String dormId, LocalDateTime createdAt) {
@@ -39,7 +39,7 @@ public class UserData {
         this.email = email;
         this.username = username;
         this.password = password;
-        this.dormId = dormId;
+        this.roomNumber = dormId;
         this.createdAt = createdAt;
     }
 
@@ -48,7 +48,7 @@ public class UserData {
         this.email = email;
         this.username = username;
         this.password = password;
-        this.dormId = dormId;
+        this.roomNumber = dormId;
         this.role = role;
         this.createdAt = createdAt;
     }
@@ -60,7 +60,7 @@ public class UserData {
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", dormId='" + dormId + '\'' +
+                ", dormId='" + roomNumber + '\'' +
                 ", createdAt=" + createdAt +
                 '}';
     }
@@ -97,12 +97,12 @@ public class UserData {
         this.password = password;
     }
 
-    public String getDormId() {
-        return dormId;
+    public String getRoomNumber() {
+        return roomNumber;
     }
 
-    public void setDormId(String dormId) {
-        this.dormId = dormId;
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
     }
 
     public String getRole() {

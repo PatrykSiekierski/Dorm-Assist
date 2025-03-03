@@ -51,8 +51,8 @@ export default function ChangeUsername() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="register-form">
-      <div className="register-form__element">
+    <form onSubmit={handleSubmit(onSubmit)} className="profile-form">
+      <div className="profile-form__element">
         <PasswordForm
           id={"password"}
           register={register}
@@ -61,7 +61,7 @@ export default function ChangeUsername() {
           labelName={"Podaj hasło:"}
         />
       </div>
-      <div className="register-form__element">
+      <div className="profile-form__element">
         <UsernameForm
           register={register}
           errors={errors}

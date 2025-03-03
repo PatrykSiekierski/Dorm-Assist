@@ -40,17 +40,20 @@ export default function DeleteAccount() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="register-form">
-      <div className="register-form__element">
-        <PasswordForm
-          id={"password"}
-          register={register}
-          errors={errors}
-          elementName={"password"}
-          labelName={"Hasło:"}
-        />
-      </div>
-      <input type="submit" className="button" />
-    </form>
+    <>
+      <h3>Podaj hasło aby usunąć konto</h3>
+      <form onSubmit={handleSubmit(onSubmit)} className="profile-form">
+        <div className="profile-form__element">
+          <PasswordForm
+            id={"password"}
+            register={register}
+            errors={errors}
+            elementName={"password"}
+            labelName={"Hasło:"}
+          />
+        </div>
+        <input type="submit" className="button" />
+      </form>
+    </>
   );
 }

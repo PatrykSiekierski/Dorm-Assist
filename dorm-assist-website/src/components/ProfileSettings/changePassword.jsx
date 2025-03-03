@@ -40,8 +40,8 @@ export default function ChangePassword() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="register-form">
-      <div className="register-form__element">
+    <form onSubmit={handleSubmit(onSubmit)} className="profile-form">
+      <div className="profile-form__element">
         <PasswordForm
           id={"oldPassword"}
           register={register}
@@ -50,7 +50,7 @@ export default function ChangePassword() {
           labelName={"Stare hasło:"}
         />
       </div>
-      <div className="register-form__element">
+      <div className="profile-form__element">
         <PasswordForm
           id={"newPassword"}
           register={register}
@@ -59,7 +59,7 @@ export default function ChangePassword() {
           labelName={"Nowe hasło:"}
         />
       </div>
-      <div className="register-form__element">
+      <div className="profile-form__element">
         <RepeatPasswordForm
           register={register}
           errors={errors}

@@ -8,8 +8,12 @@ import {
   RepeatPasswordForm,
   RoomNumberForm,
 } from "../Utils/formsElements";
+import { loginAndGetToken } from "../Utils/authService";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterForm() {
+  const navigate = useNavigate();
+
   const [apiErrors, setApiErrors] = useState({ email: "", username: "" });
   const {
     register,
@@ -40,6 +44,7 @@ export default function RegisterForm() {
       });
 
       console.log(postUsers);
+      console.log(postUsers.data);
 
       const newErrors = { email: "", username: "" };
       if (postUsers.data) {
@@ -52,6 +57,17 @@ export default function RegisterForm() {
           newErrors.username = "Ta nazwa użytkownika jest już zajęta";
           console.log("username zły");
           console.log(newErrors);
+        }
+      }
+      if (postUsers.data == "") {
+        let loginAfterRegistering = await loginAndGetToken(
+          body.username,
+          body.password
+        );
+        if (loginAfterRegistering != null) {
+          navigate("/");
+        } else {
+          navigate("/login");
         }
       }
       setApiErrors(newErrors);

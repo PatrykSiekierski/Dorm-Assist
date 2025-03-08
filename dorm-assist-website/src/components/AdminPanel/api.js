@@ -74,3 +74,19 @@ export async function deleteUser(username) {
     console.error("Error sending data: ", error);
   }
 }
+
+export async function addSampleUser() {
+  try {
+    const send = await axios({
+      method: "post",
+      url: "http://localhost:8080/example/user/add",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(send);
+    console.log(send.data);
+  } catch (error) {
+    console.error("Error sending data: ", error);
+  }
+}

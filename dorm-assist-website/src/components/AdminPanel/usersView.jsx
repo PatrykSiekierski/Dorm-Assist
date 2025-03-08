@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { deleteUser, getUsers } from "./api";
+import { addSampleUser, deleteUser, getUsers } from "./api";
 
 export default function UsersView({ reloadTrigger }) {
   const [users, setUsers] = useState([]);
@@ -15,6 +15,8 @@ export default function UsersView({ reloadTrigger }) {
     fetchData();
   }, [reloadTrigger]);
 
+  // console.log(users);
+
   return (
     <div className="report-viewer__panel__users">
       <AddSampleUser />
@@ -26,12 +28,16 @@ export default function UsersView({ reloadTrigger }) {
 }
 
 function AddSampleUser() {
+  function tryAddingSampleUser() {
+    addSampleUser();
+  }
+
   return (
     <div className="report-viewer__add-sample">
       <div>
         <p>Dodaj przykładowego użytkownika do testów.</p>
       </div>
-      <button>Dodaj</button>
+      <button onClick={tryAddingSampleUser}>Dodaj</button>
     </div>
   );
 }

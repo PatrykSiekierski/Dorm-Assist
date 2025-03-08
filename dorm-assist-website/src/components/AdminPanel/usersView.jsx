@@ -17,9 +17,21 @@ export default function UsersView({ reloadTrigger }) {
 
   return (
     <div className="report-viewer__panel__users">
+      <AddSampleUser />
       {users.map((user) => (
         <UserElement key={user.id} user={user} setUsers={setUsers} />
       ))}
+    </div>
+  );
+}
+
+function AddSampleUser() {
+  return (
+    <div className="report-viewer__add-sample">
+      <div>
+        <p>Dodaj przykładowego użytkownika do testów.</p>
+      </div>
+      <button>Dodaj</button>
     </div>
   );
 }

@@ -21,4 +21,14 @@
     color: white;
     cursor: pointer;
   }
+
+  &__add-sample {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.3rem 0.3rem 0.3rem 1.3rem;
+    background-color: darken($color: $subtle-background-color, $amount: 10);
+    border-radius: 1rem;
+    margin-bottom: 0.5rem;
+  }
 }

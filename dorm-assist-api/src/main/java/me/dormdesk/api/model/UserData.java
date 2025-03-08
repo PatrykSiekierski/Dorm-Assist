@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Component
 @Entity
@@ -20,6 +21,10 @@ public class UserData {
     private String password;
     private String roomNumber;
     private String role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ExampleUsersData> exampleUsersData;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;
@@ -119,5 +124,13 @@ public class UserData {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public List<ExampleUsersData> getExampleUsersData() {
+        return exampleUsersData;
+    }
+
+    public void setExampleUsersData(List<ExampleUsersData> exampleUsersData) {
+        this.exampleUsersData = exampleUsersData;
     }
 }

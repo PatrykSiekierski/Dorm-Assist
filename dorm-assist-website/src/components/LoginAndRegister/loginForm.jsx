@@ -48,7 +48,11 @@ export default function LoginForm() {
           labelName={"Hasło"}
         />
       </div>
-      {credentialsState ? <h3>Złe dane logowania</h3> : ""}
+      {credentialsState ? (
+        <h3 className="error-message">Złe dane logowania</h3>
+      ) : (
+        ""
+      )}
       <input type="submit" className="button" />
     </form>
   );

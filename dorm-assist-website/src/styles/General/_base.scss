@@ -124,3 +124,8 @@ html {
   color: white;
   text-align: center;
 }
+
+hr {
+  border: none;
+  border-bottom: 2px solid $accent;
+}

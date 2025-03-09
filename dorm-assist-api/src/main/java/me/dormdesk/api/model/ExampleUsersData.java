@@ -77,7 +77,7 @@ public class ExampleUsersData {
     }
 
     private static String generateRoomNumber() {
-        int randomRoomNumber = random.nextInt(3) * 100 + random.nextInt(21);
+        int randomRoomNumber = random.nextInt(3) * 100 + random.nextInt(21) + 1;
         if (random.nextInt(2) == 1) return randomRoomNumber + "a";
         return randomRoomNumber + "b";
     }

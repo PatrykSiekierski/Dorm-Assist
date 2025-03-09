@@ -90,3 +90,36 @@ export async function addSampleUser() {
     console.error("Error sending data: ", error);
   }
 }
+
+export async function getSampleUsers() {
+  try {
+    const send = await axios({
+      method: "get",
+      url: "http://localhost:8080/example/user/getall",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    // console.log(send);
+    // console.log(send.data);
+    return send.data;
+  } catch (error) {
+    console.error("Error sending data: ", error);
+  }
+}
+
+export async function deleteSampleUser(exampleUser) {
+  try {
+    const send = await axios({
+      method: "delete",
+      url: "http://localhost:8080/example/user/delete",
+      data: exampleUser,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(send);
+  } catch (error) {
+    console.error("Error sending data: ", error);
+  }
+}

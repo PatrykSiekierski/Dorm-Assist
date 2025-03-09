@@ -1,36 +1,46 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { addSampleUser, deleteUser, getUsers } from "./api";
+import {
+  addSampleUser,
+  deleteSampleUser,
+  deleteUser,
+  getSampleUsers,
+  getUsers,
+} from "./api";
 
-export default function UsersView({ reloadTrigger }) {
-  const [users, setUsers] = useState([]);
+export default function UsersView({ reloadTrigger, reloadData }) {
+  const [sampleUsers, setSampleUsers] = useState([]);
 
+  //Load sample users on selecting section and realoading.
   useEffect(() => {
-    setUsers([]);
+    setSampleUsers([]);
     async function fetchData() {
-      let data = await getUsers();
-      setUsers(data);
+      let request = await getSampleUsers();
+      setSampleUsers(request);
     }
 
     fetchData();
   }, [reloadTrigger]);
 
-  // console.log(users);
-
   return (
     <div className="report-viewer__panel__users">
-      <AddSampleUser />
-      {users.map((user) => (
-        <UserElement key={user.id} user={user} setUsers={setUsers} />
+      <AddSampleUser reloadData={reloadData} />
+      {sampleUsers.map((user) => (
+        <UserElement key={user.id} user={user} setUsers={setSampleUsers} />
       ))}
     </div>
   );
 }
 
-function AddSampleUser() {
-  function tryAddingSampleUser() {
-    addSampleUser();
-  }
+function AddSampleUser({ reloadData }) {
+  const tryAddingSampleUser = async () => {
+    try {
+      await addSampleUser();
+      reloadData();
+    } catch (error) {
+      console.error("Could not add sample user:", error);
+    }
+  };
 
   return (
     <div className="report-viewer__add-sample">
@@ -45,7 +55,7 @@ function AddSampleUser() {
 function UserElement({ user, setUsers }) {
   function deleteTarget() {
     setUsers((prev) => prev.filter((item) => item != user));
-    deleteUser(user.username);
+    deleteSampleUser(user);
   }
 
   return (

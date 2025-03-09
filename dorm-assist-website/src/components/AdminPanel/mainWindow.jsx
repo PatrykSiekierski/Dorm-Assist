@@ -5,9 +5,13 @@ import UsersView from "./usersView";
 export default function MainWindow({ selectedCategory }) {
   const [reloadTrigger, setReloadTrigger] = useState(false);
 
-  function reloadData() {
+  // function reloadData() {
+  // setReloadTrigger(!reloadTrigger);
+  // }
+
+  const reloadData = () => {
     setReloadTrigger(!reloadTrigger);
-  }
+  };
 
   return (
     <div className="report-viewer__panel">
@@ -23,7 +27,7 @@ export default function MainWindow({ selectedCategory }) {
           <ReportsView reloadTrigger={reloadTrigger} />
         )}
         {selectedCategory == "Użytkownicy" && (
-          <UsersView reloadTrigger={reloadTrigger} />
+          <UsersView reloadTrigger={reloadTrigger} reloadData={reloadData} />
         )}
       </div>
     </div>

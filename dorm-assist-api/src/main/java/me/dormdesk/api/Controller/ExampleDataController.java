@@ -23,7 +23,7 @@ public class ExampleDataController {
 
     @CrossOrigin
     @GetMapping("/user/getAll")
-    public List<ExampleUsersData> getAllExampleUsers(@RequestBody HttpServletRequest request) {
+    public List<ExampleUsersData> getAllExampleUsers(HttpServletRequest request) {
         String username = jwtService.getUsernameFromRequest(request);
 
         return service.getAllExampleUsers(username);
@@ -31,12 +31,16 @@ public class ExampleDataController {
 
     @CrossOrigin
     @PostMapping("/user/add")
-    public ExampleUsersData addExampleUser(@RequestBody HttpServletRequest request) {
+    public ExampleUsersData addExampleUser(HttpServletRequest request) {
         String username = jwtService.getUsernameFromRequest(request);
 
         return service.addExampleUser(username);
     }
 
-    public void deleteExampleUser(@RequestBody int exampleUserId) {}
+    @CrossOrigin
+    @DeleteMapping("/user/delete")
+    public void deleteExampleUser(int exampleUserId) {
+        service.deleteExampleUser(exampleUserId);
+    }
 
 }

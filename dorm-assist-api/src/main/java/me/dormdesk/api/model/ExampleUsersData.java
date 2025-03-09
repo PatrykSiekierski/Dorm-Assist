@@ -15,11 +15,11 @@ import java.util.Random;
 public class ExampleUsersData {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     private UserData user;
 
     @Column(name = "e-mail")

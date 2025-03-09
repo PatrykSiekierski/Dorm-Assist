@@ -14,16 +14,19 @@ public class UserData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
     @Column(name = "e-mail")
     private String email;
+
     private String username;
     private String password;
     private String roomNumber;
     private String role;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ExampleUsersData> exampleUsersData;
+//    @OneToMany(mappedBy = "user")
+//    private List<ExampleUsersData> exampleUsersData;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -126,11 +129,11 @@ public class UserData {
         this.createdAt = createdAt;
     }
 
-    public List<ExampleUsersData> getExampleUsersData() {
-        return exampleUsersData;
-    }
-
-    public void setExampleUsersData(List<ExampleUsersData> exampleUsersData) {
-        this.exampleUsersData = exampleUsersData;
-    }
+//    public List<ExampleUsersData> getExampleUsersData() {
+//        return exampleUsersData;
+//    }
+//
+//    public void setExampleUsersData(List<ExampleUsersData> exampleUsersData) {
+//        this.exampleUsersData = exampleUsersData;
+//    }
 }

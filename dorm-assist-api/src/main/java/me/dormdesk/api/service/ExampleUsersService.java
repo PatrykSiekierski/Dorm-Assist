@@ -34,7 +34,8 @@ public class ExampleUsersService {
             throw new RuntimeException("User not found");
         }
         ExampleUsersData exampleUser = ExampleUsersData.generateExampleUserData(user.get());
-        
+
+        System.out.println("User: " + user);
         return exampleUserRepo.save(exampleUser);
     }
 

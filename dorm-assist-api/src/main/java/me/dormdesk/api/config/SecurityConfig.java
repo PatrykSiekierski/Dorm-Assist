@@ -43,6 +43,7 @@ public class SecurityConfig {
 //                    registry.requestMatchers(HttpMethod.DELETE, "/users/admin/delete").authenticated();
                     registry.requestMatchers("/users/**").authenticated();
                     registry.requestMatchers("/form/admin/**").hasRole("ADMIN");
+                    registry.requestMatchers("/example/**").hasRole("ADMIN");
                 })
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

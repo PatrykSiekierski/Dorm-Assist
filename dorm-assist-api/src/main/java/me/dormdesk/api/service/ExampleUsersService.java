@@ -33,13 +33,32 @@ public class ExampleUsersService {
         if (user.isEmpty()) {
             throw new RuntimeException("User not found");
         }
-        ExampleUsersData exampleUser = ExampleUsersData.generateExampleUserData(user.get());
 
-        System.out.println("User: " + user);
+        ExampleUsersData exampleUser;
+        do {
+            exampleUser = ExampleUsersData.generateExampleUserData(user.get());
+        } while (doesExampleUserAlreadyExist(exampleUser.getEmail(), user.get().getId()));
+
         return exampleUserRepo.save(exampleUser);
     }
 
-    public void deleteExampleUser(int exampleUserId) {
-        exampleUserRepo.deleteById(exampleUserId);
+    private boolean doesExampleUserAlreadyExist(String exampleUserEmail, int userId) {
+        Optional<ExampleUsersData> foundExampleUser = exampleUserRepo.findByEmail(exampleUserEmail);
+        if (foundExampleUser.isEmpty()) return false;
+
+        if (foundExampleUser.get().getEmail().equals(exampleUserEmail)) return false;
+
+        return foundExampleUser.get().getUser().getId() == userId;
     }
+
+    public void deleteExampleUser(ExampleUsersData exampleUsersData, String username) {
+        Optional<UserData> user = userRepo.findByUsername(username);
+        if (user.isEmpty()) {
+            throw new RuntimeException("Requesting user not found");
+        }
+        if (exampleUsersData.getUser().getId() != user.get().getId()) throw new RuntimeException("Requesting user is different than the owner");
+
+        exampleUserRepo.deleteById(exampleUsersData.getId());
+    }
+
 }

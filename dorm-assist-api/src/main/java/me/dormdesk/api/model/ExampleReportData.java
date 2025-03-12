@@ -56,7 +56,7 @@ public class ExampleReportData {
 
     private static final Random random = new Random();
 
-    public ExampleReportData generateRandomSampleReport(ExampleUsersData exampleUsersData) {
+    public static ExampleReportData generateRandomSampleReport(ExampleUsersData exampleUsersData) {
         String operatingSystem = getRandomOperatingSystem();
         boolean socketMounted = random.nextBoolean();
         boolean wasInternetWorking = random.nextBoolean();
@@ -65,7 +65,7 @@ public class ExampleReportData {
         return new ExampleReportData(exampleUsersData, operatingSystem, socketMounted, wasInternetWorking, problemDescription, false);
     }
 
-    private String getRandomOperatingSystem() {
+    private static String getRandomOperatingSystem() {
         String system = switch (random.nextInt(3)) {
             case 0 -> "Windows";
             case 1 -> "Linux";
@@ -75,7 +75,7 @@ public class ExampleReportData {
         return system;
     }
 
-    private String generateRandomProblemDescription(boolean socketMounted, boolean wasInternetWorking) {
+    private static String generateRandomProblemDescription(boolean socketMounted, boolean wasInternetWorking) {
         if (!socketMounted && !wasInternetWorking) {
             return "Gniazdko jest zniszczone odkąd tu jestem.";
         } else if (socketMounted && !wasInternetWorking) {

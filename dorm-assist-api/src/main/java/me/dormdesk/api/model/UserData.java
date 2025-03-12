@@ -25,9 +25,6 @@ public class UserData {
     private String roomNumber;
     private String role;
 
-//    @OneToMany(mappedBy = "user")
-//    private List<ExampleUsersData> exampleUsersData;
-
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;

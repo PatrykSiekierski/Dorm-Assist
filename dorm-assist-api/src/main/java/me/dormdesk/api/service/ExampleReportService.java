@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class ExampleReportService {
@@ -42,8 +43,20 @@ public class ExampleReportService {
         return exampleReports;
     }
 
-    public ExampleReportData addExampleReport(ExampleUsersData exampleUsersData) {
-        return ExampleReportData.generateRandomSampleReport(exampleUsersData);
+    public ExampleReportData addExampleReport(String username) {
+        Optional<UserData> user = userRepo.findByUsername(username);
+        if (user.isEmpty()) {
+            return null;
+        }
+
+        List<ExampleUsersData> exampleUsersData = exampleUserRepo.findByUserId(user.get().getId());
+        Random random = new Random();
+        ExampleUsersData exampleUser = exampleUsersData.get(random.nextInt(exampleUsersData.size()));
+
+        ExampleReportData exampleReport = ExampleReportData.generateRandomSampleReport(exampleUser);
+        repo.save(exampleReport);
+
+        return exampleReport;
     }
 
     public void deleteExampleReport(ExampleReportData exampleReportData) {

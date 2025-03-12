@@ -30,8 +30,10 @@ public class ExampleReportController {
 
     @CrossOrigin
     @PostMapping("/add")
-    public ExampleReportData addExampleUser(@RequestBody ExampleUsersData exampleUsersData) {
-        return service.addExampleReport(exampleUsersData);
+    public ExampleReportData addExampleUser(HttpServletRequest request) {
+        String username = jwtService.getUsernameFromRequest(request);
+
+        return service.addExampleReport(username);
     }
 
     @CrossOrigin

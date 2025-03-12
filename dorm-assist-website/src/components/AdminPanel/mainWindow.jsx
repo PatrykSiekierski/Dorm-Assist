@@ -24,7 +24,7 @@ export default function MainWindow({ selectedCategory }) {
       <hr />
       <div className="report-viewer__panel__content">
         {selectedCategory == "Zgłoszenia" && (
-          <ReportsView reloadTrigger={reloadTrigger} />
+          <ReportsView reloadTrigger={reloadTrigger} reloadData={reloadData} />
         )}
         {selectedCategory == "Użytkownicy" && (
           <UsersView reloadTrigger={reloadTrigger} reloadData={reloadData} />

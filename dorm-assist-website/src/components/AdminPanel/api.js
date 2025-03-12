@@ -75,6 +75,56 @@ export async function deleteUser(username) {
   }
 }
 
+export async function addSampleReport() {
+  try {
+    const send = await axios({
+      method: "post",
+      url: "http://localhost:8080/example/report/add",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(send);
+    console.log(send.data);
+  } catch (error) {
+    console.error("Error sending data: ", error);
+  }
+}
+
+export async function getSampleReports() {
+  try {
+    const send = await axios({
+      method: "get",
+      url: "http://localhost:8080/example/report/getall",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    // console.log(send);
+    // console.log(send.data);
+    if (send.data == undefined || send.data == "") return [];
+    return send.data;
+  } catch (error) {
+    console.error("Error sending data: ", error);
+  }
+}
+
+export async function deleteSampleReport(exampleReport) {
+  try {
+    const send = await axios({
+      method: "delete",
+      url: "http://localhost:8080/example/report/delete",
+      data: exampleReport,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(send);
+  } catch (error) {
+    console.error("Error sending data: ", error);
+  }
+}
+
 export async function addSampleUser() {
   try {
     const send = await axios({

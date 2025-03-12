@@ -1,25 +1,32 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { getReports, solvedReport } from "./api";
+import {
+  addSampleReport,
+  getReports,
+  getSampleReports,
+  solvedReport,
+} from "./api";
 
-export default function ReportsView({ reloadTrigger }) {
+export default function ReportsView({ reloadTrigger, reloadData }) {
   const [reports, setReports] = useState([]);
 
   useEffect(() => {
     setReports([]);
     async function fetchData() {
-      let data = await getReports();
+      let data = await getSampleReports();
       setReports(data);
     }
 
     fetchData();
   }, [reloadTrigger]);
 
+  console.log(reports);
   const unSolvedReports = reports.filter((report) => !report.solved && report);
   const solvedReports = reports.filter((report) => report.solved && report);
 
   return (
     <div className="report-viewer__panel__report">
+      <AddSampleReport reloadData={reloadData} />
       {unSolvedReports.map((report) => (
         <ReportElement
           key={report.id}
@@ -34,6 +41,26 @@ export default function ReportsView({ reloadTrigger }) {
           setReports={setReports}
         />
       ))}
+    </div>
+  );
+}
+
+function AddSampleReport({ reloadData }) {
+  const tryAddingSampleReport = async () => {
+    try {
+      await addSampleReport();
+      reloadData();
+    } catch (error) {
+      console.error("Could not add sample reports:", error);
+    }
+  };
+
+  return (
+    <div className="report-viewer__add-sample">
+      <div>
+        <p>Dodaj przykładowe zgłoszenie do testów.</p>
+      </div>
+      <button onClick={tryAddingSampleReport}>Dodaj</button>
     </div>
   );
 }
@@ -79,7 +106,7 @@ function ReportElement({ report, setReports }) {
           report.solved && "report-viewer__solved"
         }`}
       >
-        <p>{report.roomNumber}</p>
+        <p>{report.exampleUserData.roomNumber}</p>
         <div className="report-viewer__panel__report__element__right">
           <p>{date + " " + time}</p>
           <button

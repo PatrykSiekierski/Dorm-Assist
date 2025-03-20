@@ -20,7 +20,7 @@ async function fetchData(link) {
 }
 
 export async function getReports() {
-  return await fetchData("http://localhost:8080/form/admin/get");
+  return await fetchData("http://localhost:8080/form/admin/getsample");
 }
 
 export async function getUsers() {
@@ -159,6 +159,9 @@ export async function getSampleUsers() {
 }
 
 export async function deleteSampleUser(exampleUser) {
+  const token = localStorage.getItem("token");
+
+  console.log(exampleUser);
   try {
     const send = await axios({
       method: "delete",

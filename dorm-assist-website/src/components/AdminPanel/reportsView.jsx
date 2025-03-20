@@ -9,15 +9,21 @@ import {
 
 export default function ReportsView({ reloadTrigger, reloadData }) {
   const [reports, setReports] = useState([]);
+  const [userReports, setUserReports] = useState([]);
 
   useEffect(() => {
     setReports([]);
-    async function fetchData() {
+    async function fetchSampleData() {
       let data = await getSampleReports();
       setReports(data);
     }
 
-    fetchData();
+    async function fetchUserData() {
+      let data = await getReports();
+      setUserReports(data);
+    }
+
+    fetchSampleData();
   }, [reloadTrigger]);
 
   console.log(reports);

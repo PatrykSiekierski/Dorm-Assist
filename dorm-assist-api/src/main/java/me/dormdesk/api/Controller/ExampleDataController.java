@@ -5,6 +5,7 @@ import me.dormdesk.api.model.ExampleUsersData;
 import me.dormdesk.api.model.UserData;
 import me.dormdesk.api.service.ExampleUsersService;
 import me.dormdesk.api.webtoken.JwtService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,36 +14,27 @@ import java.util.List;
 @RequestMapping("/example")
 public class ExampleDataController {
 
-    JwtService jwtService;
     ExampleUsersService service;
 
-    public ExampleDataController(JwtService jwtService, ExampleUsersService service){
-        this.jwtService = jwtService;
+    public ExampleDataController(ExampleUsersService service){
         this.service = service;
     }
 
     @CrossOrigin
     @GetMapping("/user/getall")
-    public List<ExampleUsersData> getAllExampleUsers(HttpServletRequest request) {
-        String username = jwtService.getUsernameFromRequest(request);
-
-        return service.getAllExampleUsers(username);
+    public List<ExampleUsersData> getAllExampleUsers(@AuthenticationPrincipal UserData user) {
+        return service.getAllExampleUsers(user);
     }
 
-    @CrossOrigin
     @PostMapping("/user/add")
-    public ExampleUsersData addExampleUser(HttpServletRequest request) {
-        String username = jwtService.getUsernameFromRequest(request);
-
-        return service.addExampleUser(username);
+    public ExampleUsersData addExampleUser(@AuthenticationPrincipal UserData user) {
+        return service.addExampleUser(user);
     }
 
     @CrossOrigin
     @DeleteMapping("/user/delete")
-    public void deleteExampleUser(@RequestBody ExampleUsersData exampleUsersData, HttpServletRequest request) {
-        String username = jwtService.getUsernameFromRequest(request);
-
-        service.deleteExampleUser(exampleUsersData, username);
+    public void deleteExampleUser(@RequestBody ExampleUsersData exampleUsersData, @AuthenticationPrincipal UserData user) {
+        service.deleteExampleUser(exampleUsersData, user);
     }
 
 }

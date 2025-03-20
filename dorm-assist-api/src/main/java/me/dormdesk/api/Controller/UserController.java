@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,22 +64,19 @@ public class UserController {
 
     @CrossOrigin
     @PutMapping("/change/password")
-    public ResponseEntity<String> changePassword(@RequestBody UserChangeModel userChangeModel, HttpServletRequest request) {
-        String username = jwtService.getUsernameFromRequest(request);
-        return service.changePassword(username, userChangeModel);
+    public ResponseEntity<String> changePassword(@RequestBody UserChangeModel userChangeModel, @AuthenticationPrincipal UserData user) {
+        return service.changePassword(user, userChangeModel);
     }
 
     @CrossOrigin
     @PutMapping("/change/username")
-    public ResponseEntity<String> changeUsername(@RequestBody UserChangeModel userChangeModel, HttpServletRequest request) {
-        String username = jwtService.getUsernameFromRequest(request);
-        return service.changeUsername(username, userChangeModel);
+    public ResponseEntity<String> changeUsername(@RequestBody UserChangeModel userChangeModel, @AuthenticationPrincipal UserData user) {
+        return service.changeUsername(user, userChangeModel);
     }
 
     @CrossOrigin
     @DeleteMapping("/change/delete")
-    public ResponseEntity<String> deleteUser(@RequestBody String password, HttpServletRequest request) {
-        String username = jwtService.getUsernameFromRequest(request);
-        return service.deleteUser(username, password);
+    public ResponseEntity<String> deleteUser(@RequestBody String password, @AuthenticationPrincipal UserData user) {
+        return service.deleteUser(user, password);
     }
 }

@@ -12,12 +12,18 @@ public class FormData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String roomNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserData user;
+
+//    private String roomNumber;
     private String operatingSystem;
     private boolean socketMounted;
     private boolean wasInternetWorking;
     private String problemDescription;
     private boolean isSolved = false;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;
@@ -26,7 +32,6 @@ public class FormData {
     public String toString() {
         return "FormData{" +
                 "id=" + id +
-                ", roomNumber='" + roomNumber + '\'' +
                 ", operatingSystem='" + operatingSystem + '\'' +
                 ", socketMounted=" + socketMounted +
                 ", wasInternetWorking=" + wasInternetWorking +
@@ -39,9 +44,8 @@ public class FormData {
     public FormData() {
     }
 
-    public FormData(int id, String roomNumber, String operatingSystem, boolean socketMounted, boolean wasInternetWorking, String problemDescription) {
+    public FormData(int id, String operatingSystem, boolean socketMounted, boolean wasInternetWorking, String problemDescription) {
         this.id = id;
-        this.roomNumber = roomNumber;
         this.operatingSystem = operatingSystem;
         this.socketMounted = socketMounted;
         this.wasInternetWorking = wasInternetWorking;
@@ -50,7 +54,6 @@ public class FormData {
 
     public FormData(int id, String roomNumber, String operatingSystem, boolean socketMounted, boolean wasInternetWorking, String problemDescription, boolean isSolved, LocalDateTime createdAt) {
         this.id = id;
-        this.roomNumber = roomNumber;
         this.operatingSystem = operatingSystem;
         this.socketMounted = socketMounted;
         this.wasInternetWorking = wasInternetWorking;
@@ -65,14 +68,6 @@ public class FormData {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getRoomNumber() {
-        return roomNumber;
-    }
-
-    public void setRoomNumber(String roomNumber) {
-        this.roomNumber = roomNumber;
     }
 
     public String getOperatingSystem() {
@@ -121,5 +116,13 @@ public class FormData {
 
     public void setSolved(boolean solved) {
         isSolved = solved;
+    }
+
+    public UserData getUser() {
+        return user;
+    }
+
+    public void setUser(UserData user) {
+        this.user = user;
     }
 }

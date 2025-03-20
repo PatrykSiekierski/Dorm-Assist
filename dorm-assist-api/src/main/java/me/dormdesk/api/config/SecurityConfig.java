@@ -1,6 +1,7 @@
 package me.dormdesk.api.config;
 
 
+import me.dormdesk.api.model.UserData;
 import me.dormdesk.api.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,11 +45,13 @@ public class SecurityConfig {
                     registry.requestMatchers("/users/**").authenticated();
                     registry.requestMatchers("/form/admin/**").hasRole("ADMIN");
                     registry.requestMatchers("/example/**").hasRole("ADMIN");
+
                 })
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
+
 
     @Bean
     public UserDetailsService userDetailsService() {

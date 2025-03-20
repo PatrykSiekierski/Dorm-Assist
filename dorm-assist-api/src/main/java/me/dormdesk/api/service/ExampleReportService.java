@@ -27,13 +27,13 @@ public class ExampleReportService {
         this.repo = repo;
     }
 
-    public List<ExampleReportData> getAllReports(String username) {
-        Optional<UserData> user = userRepo.findByUsername(username);
-        if (user.isEmpty()) {
+    public List<ExampleReportData> getAllReports(UserData user) {
+        if (user == null) {
+            //Need to make and error/exception that user is empty
             return null;
         }
 
-        List<ExampleUsersData> exampleUsersData = exampleUserRepo.findByUserId(user.get().getId());
+        List<ExampleUsersData> exampleUsersData = exampleUserRepo.findByUserId(user.getId());
         List<ExampleReportData> exampleReports = new ArrayList<>();
         for (ExampleUsersData exampleUser : exampleUsersData) {
             exampleReports.addAll(repo.findByExampleUserData(exampleUser));
@@ -43,13 +43,13 @@ public class ExampleReportService {
         return exampleReports;
     }
 
-    public ExampleReportData addExampleReport(String username) {
-        Optional<UserData> user = userRepo.findByUsername(username);
-        if (user.isEmpty()) {
+    public ExampleReportData addExampleReport(UserData user) {
+        if (user == null) {
+            //Need to make and error/exception that user is empty
             return null;
         }
 
-        List<ExampleUsersData> exampleUsersData = exampleUserRepo.findByUserId(user.get().getId());
+        List<ExampleUsersData> exampleUsersData = exampleUserRepo.findByUserId(user.getId());
         Random random = new Random();
         ExampleUsersData exampleUser = exampleUsersData.get(random.nextInt(exampleUsersData.size()));
 
@@ -59,7 +59,11 @@ public class ExampleReportService {
         return exampleReport;
     }
 
-    public void deleteExampleReport(ExampleReportData exampleReportData) {
+    public void deleteExampleReport(ExampleReportData exampleReportData, UserData user) {
+        if (exampleReportData.getExampleUserData().getUser().getId() == user.getId()) {
+            //Need to make and error/exception that user is trying to delete someone's else user
+            return;
+        }
         repo.deleteById(exampleReportData.getId());
     }
 }

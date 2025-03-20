@@ -3,8 +3,10 @@ package me.dormdesk.api.Controller;
 import jakarta.servlet.http.HttpServletRequest;
 import me.dormdesk.api.model.ExampleReportData;
 import me.dormdesk.api.model.ExampleUsersData;
+import me.dormdesk.api.model.UserData;
 import me.dormdesk.api.service.ExampleReportService;
 import me.dormdesk.api.webtoken.JwtService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,26 +24,20 @@ public class ExampleReportController {
     }
 
     @GetMapping("/getall")
-    public List<ExampleReportData> getAllReports(HttpServletRequest request) {
-        String username = jwtService.getUsernameFromRequest(request);
-
-        return service.getAllReports(username);
+    public List<ExampleReportData> getAllReports(@AuthenticationPrincipal UserData user) {
+        return service.getAllReports(user);
     }
 
     @CrossOrigin
     @PostMapping("/add")
-    public ExampleReportData addExampleUser(HttpServletRequest request) {
-        String username = jwtService.getUsernameFromRequest(request);
-
-        return service.addExampleReport(username);
+    public ExampleReportData addExampleReport(@AuthenticationPrincipal UserData user) {
+        return service.addExampleReport(user);
     }
 
     @CrossOrigin
     @DeleteMapping("/delete")
-    public void deleteExampleUser(@RequestBody ExampleReportData exampleReportData, HttpServletRequest request) {
-        String username = jwtService.getUsernameFromRequest(request);
-
-        service.deleteExampleReport(exampleReportData);
+    public void deleteExampleReport(@RequestBody ExampleReportData exampleReportData, @AuthenticationPrincipal UserData user) {
+        service.deleteExampleReport(exampleReportData, user);
     }
 
 }

@@ -5,6 +5,7 @@ import {
   getReports,
   getSampleReports,
   solvedReport,
+  solvedSampleReport,
 } from "./api";
 
 export default function ReportsView({ reloadTrigger, reloadData }) {
@@ -98,7 +99,11 @@ function ReportElement({ report, setReports }) {
       )
     );
     let newValue = { ...report, solved: isChecked };
-    solvedReport(newValue);
+    if (report.exampleUserData) {
+      solvedSampleReport(newValue);
+    } else {
+      solvedReport(newValue);
+    }
   }
 
   return (

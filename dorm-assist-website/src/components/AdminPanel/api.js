@@ -125,6 +125,22 @@ export async function deleteSampleReport(exampleReport) {
   }
 }
 
+export async function solvedSampleReport(newValue) {
+  try {
+    const update = await axios({
+      method: "put",
+      url: "http://localhost:8080/example/report/update",
+      data: newValue,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+    return false;
+  }
+}
+
 export async function addSampleUser() {
   try {
     const send = await axios({

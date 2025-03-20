@@ -3,6 +3,7 @@ package me.dormdesk.api.Controller;
 import jakarta.servlet.http.HttpServletRequest;
 import me.dormdesk.api.model.ExampleReportData;
 import me.dormdesk.api.model.ExampleUsersData;
+import me.dormdesk.api.model.FormData;
 import me.dormdesk.api.model.UserData;
 import me.dormdesk.api.service.ExampleReportService;
 import me.dormdesk.api.webtoken.JwtService;
@@ -40,4 +41,8 @@ public class ExampleReportController {
         service.deleteExampleReport(exampleReportData, user);
     }
 
+    @PutMapping("/update")
+    public void updateExampleReport(@RequestBody ExampleReportData exampleReportData, @AuthenticationPrincipal UserData user) {
+        service.updateExampleReport(exampleReportData, user);
+    }
 }

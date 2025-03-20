@@ -3,6 +3,7 @@ package me.dormdesk.api.service;
 import me.dormdesk.api.Controller.ExampleReportController;
 import me.dormdesk.api.model.ExampleReportData;
 import me.dormdesk.api.model.ExampleUsersData;
+import me.dormdesk.api.model.FormData;
 import me.dormdesk.api.model.UserData;
 import me.dormdesk.api.repository.ExampleReportRepo;
 import me.dormdesk.api.repository.ExampleUserRepo;
@@ -39,7 +40,6 @@ public class ExampleReportService {
             exampleReports.addAll(repo.findByExampleUserData(exampleUser));
         }
 
-        System.out.println("--------- Example reports: " + exampleReports);
         return exampleReports;
     }
 
@@ -65,5 +65,14 @@ public class ExampleReportService {
             return;
         }
         repo.deleteById(exampleReportData.getId());
+    }
+
+    public void updateExampleReport(ExampleReportData exampleReportData, UserData user) {
+        if (exampleReportData.getExampleUserData().getUser().getId() != user.getId()) {
+            //Need to make and error/exception that user is trying to delete someone's else user
+            return;
+        }
+
+        repo.save(exampleReportData);
     }
 }

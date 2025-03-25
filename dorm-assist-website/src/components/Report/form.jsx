@@ -15,7 +15,7 @@ export default function Form() {
   // };
 
   const [formData, setFormData] = useState({
-    roomNumber: "",
+    // roomNumber: "",
     operatingSystem: "windows",
     socketMounted: true,
     wasInternetWorking: false,
@@ -39,10 +39,8 @@ export default function Form() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (formData.roomNumber.length < 2) return;
     pushData();
     setFormData({
-      roomNumber: "",
       operatingSystem: "windows",
       socketMounted: true,
       wasInternetWorking: false,
@@ -58,7 +56,7 @@ export default function Form() {
 
   return (
     <form action="" className="form-holder" onSubmit={handleSubmit}>
-      <div className="form-segment">
+      {/* <div className="form-segment">
         <label htmlFor="roomNumber">Number pokoju:</label>
         <input
           type="text"
@@ -67,19 +65,9 @@ export default function Form() {
           value={formData.roomNumber}
           onChange={handleChange}
         />
-      </div>
+      </div> */}
       {/* <label htmlFor="problem">Opisz krótko problem:</label>
         <input type="text" id="problem" placeholder="" /> */}
-      <div className="form-segment">
-        <label htmlFor="operatingSystem">System operacyjny: </label>
-        <select id="operatingSystem" onChange={handleChange}>
-          <option value="windows">Windows</option>
-          <option value="macos">MacOs</option>
-          <option value="linux">Linux</option>
-          <option value="android">Android</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
       <div className="form-segment">
         <label htmlFor="socketMounted">
           Czy gniazdko jest poprawnie zamątowane?
@@ -91,6 +79,7 @@ export default function Form() {
         />
         {/* <input type="checkbox" id="self" /> */}
       </div>
+
       <div className="form-segment">
         <label htmlFor="wasInternetWorking">
           Czy Interent działał wcześniej?
@@ -102,6 +91,18 @@ export default function Form() {
         />
         {/* <input type="checkbox" id="self" /> */}
       </div>
+
+      <div className="form-segment">
+        <label htmlFor="operatingSystem">System operacyjny: </label>
+        <select id="operatingSystem" onChange={handleChange}>
+          <option value="windows">Windows</option>
+          <option value="macos">MacOs</option>
+          <option value="linux">Linux</option>
+          <option value="android">Android</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
       <div className="form-segment description-segment">
         <label htmlFor="problemDescription">Opisz krótko problem:</label>
         <textarea

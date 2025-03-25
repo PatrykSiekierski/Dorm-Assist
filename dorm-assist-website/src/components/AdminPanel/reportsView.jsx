@@ -24,21 +24,43 @@ export default function ReportsView({ reloadTrigger, reloadData }) {
       setUserReports(data);
     }
 
+    fetchUserData();
     fetchSampleData();
   }, [reloadTrigger]);
 
   console.log(reports);
   const unSolvedReports = reports.filter((report) => !report.solved && report);
   const solvedReports = reports.filter((report) => report.solved && report);
+  const unSolvedUserReports = userReports.filter(
+    (report) => !report.solved && report
+  );
+  const solvedUserReports = userReports.filter(
+    (report) => report.solved && report
+  );
 
+  console.log(userReports);
   return (
     <div className="report-viewer__panel__report">
       <AddSampleReport reloadData={reloadData} />
+      {unSolvedUserReports.map((report) => (
+        <ReportElement
+          key={report.id + "user"}
+          report={report}
+          setReports={setUserReports}
+        />
+      ))}
       {unSolvedReports.map((report) => (
         <ReportElement
           key={report.id}
           report={report}
           setReports={setReports}
+        />
+      ))}
+      {solvedUserReports.map((report) => (
+        <ReportElement
+          key={report.id + "user"}
+          report={report}
+          setReports={setUserReports}
         />
       ))}
       {solvedReports.map((report) => (
@@ -117,7 +139,23 @@ function ReportElement({ report, setReports }) {
           report.solved && "report-viewer__solved"
         }`}
       >
-        <p>{report.exampleUserData.roomNumber}</p>
+        <div className="report-viewer__identifiers">
+          {report.exampleUserData ? (
+            <span>{report.exampleUserData.roomNumber}</span>
+          ) : report.user ? (
+            <span>{report.user.roomNumber}</span>
+          ) : (
+            <span>Brak</span>
+          )}
+          {report.exampleUserData ? (
+            <span>{report.exampleUserData.username}</span>
+          ) : report.user ? (
+            <span>{report.user.username}</span>
+          ) : (
+            <span>Brak</span>
+          )}
+          {/* <span>{report.exampleUserData.username}</span> */}
+        </div>
         <div className="report-viewer__panel__report__element__right">
           <p>{date + " " + time}</p>
           <button

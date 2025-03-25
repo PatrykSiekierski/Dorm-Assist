@@ -20,7 +20,7 @@ async function fetchData(link) {
 }
 
 export async function getReports() {
-  return await fetchData("http://localhost:8080/form/admin/getsample");
+  return await fetchData("http://localhost:8080/form/admin/get");
 }
 
 export async function getUsers() {

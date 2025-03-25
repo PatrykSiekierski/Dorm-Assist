@@ -193,3 +193,13 @@
     }
   }
 }
+
+.report-viewer__identifiers {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  span {
+    align-content: center;
+  }
+}

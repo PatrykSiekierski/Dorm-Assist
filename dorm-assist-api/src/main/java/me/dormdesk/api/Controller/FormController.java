@@ -22,22 +22,22 @@ public class FormController {
         this.service = service;
     }
 
-    @GetMapping("/admin/getsample")
-    public List<FormData> getSampleReports() {
-        return service.getSampleReports();
-    }
+//    @GetMapping("/admin/getsample")
+//    public List<FormData> getSampleReports() {
+//        return service.getSampleReports();
+//    }
 
     @GetMapping("/admin/get")
-    public FormData getUserReports(@AuthenticationPrincipal UserData user) {
+    public List<FormData> getUserReports(@AuthenticationPrincipal UserData user) {
         return service.getUserReports(user);
     }
 
     @PostMapping("/admin/post")
-    public FormData postTest(@RequestBody FormData report) {
+    public FormData postTest(@RequestBody FormData report, @AuthenticationPrincipal UserData user) {
         System.out.println(report);
 
 //        System.out.println("Pokój: " + report.getRoomNumber());
-        service.sendToRepo(report);
+        service.sendToRepo(report, user);
         return report;
     }
 

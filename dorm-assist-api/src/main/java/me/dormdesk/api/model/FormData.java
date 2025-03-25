@@ -44,6 +44,13 @@ public class FormData {
     public FormData() {
     }
 
+    public FormData(String operatingSystem, boolean socketMounted, boolean wasInternetWorking, String problemDescription) {
+        this.operatingSystem = operatingSystem;
+        this.socketMounted = socketMounted;
+        this.wasInternetWorking = wasInternetWorking;
+        this.problemDescription = problemDescription;
+    }
+
     public FormData(int id, String operatingSystem, boolean socketMounted, boolean wasInternetWorking, String problemDescription) {
         this.id = id;
         this.operatingSystem = operatingSystem;

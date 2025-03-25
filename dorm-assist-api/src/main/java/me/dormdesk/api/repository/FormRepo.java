@@ -17,6 +17,6 @@ public interface FormRepo extends JpaRepository<FormData, Integer> {
     @Query("UPDATE FormData f SET f.isSolved = :isSolved WHERE f.id = :id")
     void updateIsSolved(@Param("id") int id, @Param("isSolved") boolean isSolved);
 
-    FormData findByUserId(int userId);
+    List<FormData> findByUserId(int userId);
 
 }

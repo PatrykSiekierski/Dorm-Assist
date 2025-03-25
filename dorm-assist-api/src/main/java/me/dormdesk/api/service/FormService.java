@@ -21,11 +21,12 @@ public class FormService {
         this.repo = repo;
     }
 
-    public List<FormData> getSampleReports() {
-        return repo.findAll().reversed();
-    }
+//    public List<FormData> getSampleReports() {
+//        return repo.findAll().reversed();
+//    }
 
-    public void sendToRepo(FormData data) {
+    public void sendToRepo(FormData data, UserData user) {
+        data.setUser(user);
         repo.save(data);
     }
 
@@ -36,7 +37,7 @@ public class FormService {
 //        }
     }
 
-    public FormData getUserReports(UserData user) {
+    public List<FormData> getUserReports(UserData user) {
         if (user == null) {
             //Need to make and error/exception that user is empty
             return null;

@@ -50,6 +50,7 @@ public class ExampleReportService {
         }
 
         List<ExampleUsersData> exampleUsersData = exampleUserRepo.findByUserId(user.getId());
+        if (exampleUsersData.isEmpty()) throw new RuntimeException("There are no example users that can be linked to generation.");
         Random random = new Random();
         ExampleUsersData exampleUser = exampleUsersData.get(random.nextInt(exampleUsersData.size()));
 

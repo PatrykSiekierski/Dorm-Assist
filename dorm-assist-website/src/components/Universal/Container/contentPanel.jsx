@@ -10,15 +10,13 @@ export default function ContentPanel({
   );
 
   return (
-    <div>
-      <div className="report-viewer">
-        <CategoryPanel
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-          avilableCategories={avilableCategories}
-        />
-        <MainWindow selectedCategory={selectedCategory} />
-      </div>
+    <div className="report-viewer">
+      <CategoryPanel
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        avilableCategories={avilableCategories}
+      />
+      <MainWindow selectedCategory={selectedCategory} />
     </div>
   );
 }

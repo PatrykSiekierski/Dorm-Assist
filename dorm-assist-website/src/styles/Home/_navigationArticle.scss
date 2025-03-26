@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   margin: auto;
-  margin-top: calc(1rem + 15vh);
+  margin-top: calc(2rem + 5vh);
 
   background: rgba(255, 187, 142, 0.25);
 }
@@ -16,6 +16,10 @@
   margin-top: 2rem;
   align-items: center;
   transition: 0.35s;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
 }
 
 #option-container {

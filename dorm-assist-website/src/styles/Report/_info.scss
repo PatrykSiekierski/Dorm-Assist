@@ -14,6 +14,10 @@
   width: 80vw;
   padding: 0 !important;
 
+  @media (max-width: 724px) {
+    grid-template-columns: 1fr;
+  }
+
   .description-segment {
     width: 100%;
     grid-row: 3;

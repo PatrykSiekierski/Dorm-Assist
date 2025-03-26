@@ -1,13 +1,13 @@
 .report-viewer {
-  //   display: grid;
-  //   grid-template-columns: 12rem 1fr;
   display: flex;
   flex-direction: row;
   gap: 2rem;
   margin-right: 2rem;
-  height: 80vh;
-  max-height: 80vh;
-  // height: max-content;
+  min-height: fit-content;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
 
   &__solved {
     opacity: 0.6;

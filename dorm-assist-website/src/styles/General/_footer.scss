@@ -13,8 +13,20 @@ footer {
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     text-align: center;
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+      gap: 0rem;
+    }
+
     div {
       width: 80%;
+      @media (max-width: 724px) {
+        width: 100%;
+      }
+      @media (max-width: 480px) {
+        width: 80%;
+      }
     }
   }
 

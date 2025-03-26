@@ -13,6 +13,9 @@
   }
 
   > p {
+    width: 80%;
+    margin: auto;
+    margin-top: 1rem;
     margin-bottom: calc(1.5rem + 5vh);
   }
 }
@@ -20,6 +23,9 @@
 #faq-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
   gap: 5vw;
   margin: 0 10vw 0 10vw;
 

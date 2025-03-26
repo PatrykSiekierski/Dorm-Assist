@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import "../../styles/General/_navbar.scss";
 import { useState, useEffect } from "react";
 import {
   clearToken,

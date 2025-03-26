@@ -1,6 +1,4 @@
-import { useState } from "react";
 import Form from "./form";
-import "../../styles/Report/_info.scss";
 
 export default function Info() {
   return (

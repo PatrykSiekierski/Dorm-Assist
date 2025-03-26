@@ -1,21 +1,8 @@
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import axios from "axios";
-import "../../styles/Report/_form.scss";
+import { useState } from "react";
 import { sendReport } from "../AdminPanel/api";
 
 export default function Form() {
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get("http://localhost:8080/api/form/get");
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.error("Error fetching data", error);
-  //   }
-  // };
-
   const [formData, setFormData] = useState({
-    // roomNumber: "",
     operatingSystem: "windows",
     socketMounted: true,
     wasInternetWorking: false,
@@ -56,18 +43,6 @@ export default function Form() {
 
   return (
     <form action="" className="form-holder" onSubmit={handleSubmit}>
-      {/* <div className="form-segment">
-        <label htmlFor="roomNumber">Number pokoju:</label>
-        <input
-          type="text"
-          id="roomNumber"
-          placeholder="303A"
-          value={formData.roomNumber}
-          onChange={handleChange}
-        />
-      </div> */}
-      {/* <label htmlFor="problem">Opisz krótko problem:</label>
-        <input type="text" id="problem" placeholder="" /> */}
       <div className="form-segment">
         <label htmlFor="socketMounted">
           Czy gniazdko jest poprawnie zamątowane?
@@ -77,7 +52,6 @@ export default function Form() {
           selected={formData.socketMounted}
           onChange={handleChangeChoiceBox}
         />
-        {/* <input type="checkbox" id="self" /> */}
       </div>
 
       <div className="form-segment">
@@ -89,7 +63,6 @@ export default function Form() {
           selected={formData.wasInternetWorking}
           onChange={handleChangeChoiceBox}
         />
-        {/* <input type="checkbox" id="self" /> */}
       </div>
 
       <div className="form-segment">
@@ -120,8 +93,6 @@ export default function Form() {
 }
 
 function CheckBox({ field, selected, onChange }) {
-  // const [option, setOption] = useState("no");
-
   return (
     <div className="form-checkboxes">
       <span
@@ -129,7 +100,6 @@ function CheckBox({ field, selected, onChange }) {
         className={`option ${selected == false ? "selected" : ""}`}
         onClick={() => {
           onChange(field, false);
-          // setOption("no");
         }}
       >
         Nie
@@ -139,7 +109,6 @@ function CheckBox({ field, selected, onChange }) {
         className={`option ${selected == true ? "selected" : ""}`}
         onClick={() => {
           onChange(field, true);
-          // setOption("yes");
         }}
       >
         Tak

@@ -2,11 +2,29 @@
 
 .form-holder {
   padding: 1rem 2rem 1.5rem !important;
-  justify-items: left;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   justify-items: end;
+
+  @media (max-width: 524px) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+.form-segment {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+
+  @media (max-width: 524px) {
+    align-items: center;
+    text-align: center;
+  }
 }
 
 textarea {

@@ -10,6 +10,7 @@
 .grid-form {
   display: grid;
   grid-template-columns: 2fr 3fr;
+  max-width: 1200px;
 
   width: 80vw;
   padding: 0 !important;
@@ -22,6 +23,11 @@
     width: 100%;
     grid-row: 3;
     grid-column: 1/-1;
+
+    @media (max-width: 560px) {
+      grid-column: auto;
+      grid-row: auto;
+    }
   }
 
   #submit-button {
@@ -36,6 +42,11 @@
     &:active {
       background-color: $accent;
     }
+
+    @media (max-width: 560px) {
+      grid-row: auto;
+      grid-column: auto;
+    }
   }
 
   h2 {
@@ -46,6 +57,10 @@
     h2 {
       padding-left: 2rem !important;
       margin-bottom: 0;
+    }
+
+    @media (max-width: 524px) {
+      text-align: center;
     }
   }
 

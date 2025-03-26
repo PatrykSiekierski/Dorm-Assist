@@ -7,6 +7,10 @@
   margin: auto;
   margin-top: calc(2rem + 5vh);
 
+  @media (min-width: 2000px) {
+    padding: 5vh 30vw 5vh 30vw;
+  }
+
   background: rgba(255, 187, 142, 0.25);
 }
 
@@ -17,22 +21,28 @@
   align-items: center;
   transition: 0.35s;
 
-  @media (max-width: 480px) {
+  @media (max-width: 724px) {
     flex-direction: column;
+    margin-top: 0;
+    gap: 0;
   }
 }
 
 #option-container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 1rem;
-  width: 15rem;
   min-width: 15rem;
   gap: 1rem;
 
+  @media (max-width: 724px) {
+    flex-direction: row;
+  }
+
   button {
-    width: 100%;
-    min-width: 9rem;
+    // min-width: 9rem;
 
     transition: 0.35s;
     margin: 0;
@@ -46,12 +56,16 @@
 }
 
 #option-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 1rem;
   border-radius: 1rem;
   width: 100%;
 
   h3 {
     margin-top: 0;
+    width: 100%;
   }
 
   a {

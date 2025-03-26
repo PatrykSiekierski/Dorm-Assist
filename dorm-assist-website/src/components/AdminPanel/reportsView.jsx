@@ -42,6 +42,16 @@ export default function ReportsView({ reloadTrigger, reloadData }) {
   return (
     <div className="report-viewer__panel__report">
       <AddSampleReport reloadData={reloadData} />
+      {reports.length == 0 ? (
+        <div>
+          <p>
+            Aby dodawać przykładowe zgłoszenia musisz stworzyć przykładowych
+            użytkowników w innej zakładce
+          </p>
+        </div>
+      ) : (
+        ""
+      )}
       {unSolvedUserReports.map((report) => (
         <ReportElement
           key={report.id + "user"}

@@ -32,6 +32,7 @@ public class RegistrationController {
             return ResponseEntity.ok().header("Username").body("This username already exist.");
         }
 
+        user.setRole("ADMIN");
         myUserRepository.save(user);
         return ResponseEntity.ok().body("");
     }

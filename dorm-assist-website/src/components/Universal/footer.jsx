@@ -3,27 +3,22 @@ export default function Footer() {
     <footer>
       <div>
         <div id="footer-description">
-          <h2>About</h2>
+          <h2>O projekcie</h2>
+          <p>Projekt full-stack w postaci szybkiej strony internetowej.</p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit
-            itaque in ad unde iusto, aliquam tenetur magnam. Iste soluta veniam
-            nesciunt iure exercitationem, nisi blanditiis unde quidem amet
-            quisquam mollitia dolores esse odio. Praesentium reiciendis
-            deleniti, corrupti excepturi quos natus doloribus commodi nulla,
-            nemo saepe laboriosam. Ut cumque doloribus voluptas.
+            Stack: React, JavaScript, Java, Spring Boot, HTML, CSS, SCSS, MySql
           </p>
         </div>
         <div>
           <h2>Navigation links</h2>
           <nav id="links">
-            <a>tests</a>
-            <a>tests</a>
-            <a>tests</a>
-            <a>tests</a>
+            <a href="/admin">Admin panel</a>
+            <a href="/report">Zgłoś Online</a>
+            <a href="/admin">Admin panel</a>
           </nav>
         </div>
       </div>
-      {/* <p id="copyrights-message">Copylefts C</p> */}
+      <p id="copyrights-message">Copyrights © 2025 Patryk Siekierski</p>
     </footer>
   );
 }

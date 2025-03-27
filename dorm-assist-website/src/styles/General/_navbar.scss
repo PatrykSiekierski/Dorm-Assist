@@ -11,20 +11,16 @@
 // }
 
 nav {
-  // background-color: #f0f0f0; //dev only
-  // border-bottom: 1px solid #fafafa;
-
   margin: 0;
   padding: 0 calc(4% + 1rem);
   width: 100%;
-
   display: inline-flex;
-  // justify-content: space-around;
   justify-content: space-between;
-
-  // gap: 25%;
-
   align-items: center;
+
+  @media (max-width: 800px) {
+    justify-content: space-around;
+  }
 
   ul {
     :last-child {
@@ -43,7 +39,69 @@ nav {
     cursor: pointer;
   }
 
-  > ul li {
+  @media (max-width: 800px) {
+    position: absolute;
+    background-color: white;
+    padding: 0;
+  }
+
+  .navbar-extender {
+    display: none;
+    background: none;
+    border: none;
+
+    img {
+      width: 80%;
+    }
+
+    @media (max-width: 800px) {
+      display: block;
+    }
+  }
+
+  .navbar-links {
+    @media (max-width: 800px) {
+      display: none;
+    }
+  }
+
+  .navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    @media (max-width: 800px) {
+      display: none;
+    }
+  }
+
+  .navbar-small {
+    display: none;
+    @media (max-width: 800px) {
+      position: absolute;
+
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+
+      width: 100%;
+      margin: 0;
+      margin-top: 14rem;
+      padding: 1rem 0;
+
+      background-color: white;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .border-special {
+      border: none;
+      padding: 0;
+    }
+  }
+
+  ul li {
     font-family: "PoppinMed", sans-serif;
     font-size: 1.2rem;
 
@@ -51,15 +109,24 @@ nav {
     display: inline;
     margin-right: 5vw;
 
+    @media (max-width: 800px) {
+      margin-right: 0;
+    }
+
     position: relative;
 
     &::before {
       content: "";
       position: absolute;
+
       width: 70%;
       bottom: -3px;
       left: 15%;
       border-bottom: 2px solid $main-text;
+      @media (max-width: 800px) {
+        left: 50%;
+        width: 0;
+      }
 
       transition: all 0.5s;
     }
@@ -83,5 +150,11 @@ nav {
   &::before {
     content: "";
     border: none;
+  }
+}
+
+.hide {
+  @media (max-width: 800px) {
+    display: none !important;
   }
 }

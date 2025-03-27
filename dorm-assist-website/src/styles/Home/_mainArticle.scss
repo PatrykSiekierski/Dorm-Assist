@@ -60,8 +60,7 @@
 
   img {
     height: 50vw;
-    max-height: 50vh;
-    max-height: 700px;
+    max-height: min(50vh, 1000px);
   }
 
   p {

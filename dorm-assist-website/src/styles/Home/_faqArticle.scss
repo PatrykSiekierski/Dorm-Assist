@@ -27,7 +27,7 @@
   @media (max-width: 724px) {
     grid-template-columns: 1fr;
   }
-  gap: 5vw;
+  gap: min(5vw, 5rem);
   margin: 0 10vw 0 10vw;
 
   img {

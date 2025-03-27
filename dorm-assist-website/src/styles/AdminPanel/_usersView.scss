@@ -2,6 +2,7 @@
   &__users {
     display: flex;
     flex-direction: column;
+    min-width: 750px;
   }
 
   &__user {

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export async function isAdmin(token) {
+export async function isAdmin() {
   const tokenn = localStorage.getItem("token");
   try {
     const response = await axios({

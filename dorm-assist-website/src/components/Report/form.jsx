@@ -86,7 +86,7 @@ export default function Form() {
         ></textarea>
       </div>
       <button type="submit" id="submit-button">
-        Submit
+        Wyślij
       </button>
     </form>
   );

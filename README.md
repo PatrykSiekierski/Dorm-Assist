@@ -1,4 +1,6 @@
-# Dorm-Assist - Not finished
+<img align="center" src="./picture.png">
+
+# Dorm-Assist
 
 <p>Full-stack first contact website for dorm resitents, if they encounter a network problem.</p>
 <p>It's not finished project (almost fully functional, some bugs here and there), but I feel like I should just show this repo so not every of my projects will stay hidden in fog for who knows how long. (If there are some comments, that should not see a light, please ignore them...)</p>

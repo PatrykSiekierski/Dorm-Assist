@@ -12,9 +12,8 @@ export default function Footer() {
         <div>
           <h2>Navigation links</h2>
           <nav id="links">
-            <a href="/admin">Admin panel</a>
+            <a href="/#faq-article">Pytania</a>
             <a href="/report">Zgłoś Online</a>
-            <a href="/admin">Admin panel</a>
           </nav>
         </div>
       </div>

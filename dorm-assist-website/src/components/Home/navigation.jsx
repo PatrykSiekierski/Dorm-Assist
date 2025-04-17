@@ -5,23 +5,20 @@ const navigationContent = [
   {
     title: "Zgłoś problem na stronie",
     description:
-      "Możesz zgłosić problem na stronie" +
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, hic sunt nemo rerum autem ab nisi iste ratione itaque earum id tempora quis laborum impedit." +
-      "Corrupti ducimus illum excepturi architecto culpa consequuntur, est, iure nisi rerum voluptas iste libero reiciendis quidem facere repellendus repellat sapiente rem assumenda nam ipsa minus.",
+      'Możesz zgłosić problem na stronie poprzez zakładkę "Zgłoś Online" lub przycisk poniżej. Jednak w celu złożenia zgłoszenia wymagane będzie zalogowanie.',
   },
   {
     title: "Zgłoś problem w recepcji",
     description:
-      "Możesz zgłosić problem w zeszycie przy recepcji. " +
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, hic sunt nemo rerum autem ab nisi iste ratione itaque earum id tempora quis laborum impedit." +
-      "Corrupti ducimus illum excepturi architecto culpa consequuntur, est, iure nisi rerum voluptas iste libero reiciendis quidem facere repellendus repellat sapiente rem assumenda nam ipsa minus.",
+      "Możesz zgłosić problem w zeszycie przy recepcji. Administratorzy i recepcja regularnie sprawdzają zgłoszone w nim problemy i przychodzą w dogodnym terminie. " +
+      "Wystarczy zostawić numer pokoju, imie i nazwisko, ale opis problemu jest mile widziany.",
   },
   {
-    title: "Zgłoś problem osobiście (tylko w nagłych przypadkach)",
+    title: "Zgłoś problem osobiście (w szczególnych przypadkach)",
     description:
-      "Możesz podejść do pokoju 303 i zapukać, powinien odpowiedzieć jeden z administratorów i Ci pomóc w najszybszym tempie" +
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem, hic sunt nemo rerum autem ab nisi iste ratione itaque earum id tempora quis laborum impedit." +
-      "Corrupti ducimus illum excepturi architecto culpa consequuntur, est, iure nisi rerum voluptas iste libero reiciendis quidem facere repellendus repellat sapiente rem assumenda nam ipsa minus.",
+      "Możesz podejść do pokoju 404 i zapukać, powinien odpowiedzieć jeden z administratorów i Ci pomóc. " +
+      "Prosimy jednak o przychodzenie w ten sposób tylko w ważniejszych przypadkach, a także w rozsądnych godzinach, np. " +
+      "w przypadku przyjścia po godzinie 22:00 administratorzy mogą odmówić pomocy.",
   },
 ];
 
@@ -76,14 +73,7 @@ export default function Navigation() {
           ) : (
             <></>
           )}
-          {/* <button>Navigation button</button> */}
         </div>
-        {/* <p>- Będąc zalogowanym możesz patrzeć na historie swoich zgłoszeń</p>
-        <p>2. Możesz zgłosić problem w zeszycie przy recepcji</p>
-        <p>
-          3. Możesz podejść do pokoju 303 i zapukać, powinien odpowiedzieć jeden
-          z administratorów i Ci pomóc
-        </p> */}
       </div>
     </article>
   );

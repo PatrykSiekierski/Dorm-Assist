@@ -16,7 +16,7 @@ export default function FAQ() {
           }}
           info={{
             title: "Jak połączyć sie z Wi-Fi?",
-            text: "Wi-fi obejmuje swoim zasięgiem tylko okolice parteru, jednak jeżeli chcesz używać wi-fi możesz skorzystać z hotspotu",
+            text: "Wi-fi obejmuje swoim zasięgiem tylko okolice parteru, jednak jeżeli chcesz używać wi-fi możesz skorzystać z hotspotu.",
           }}
         />
         <FaqElement
@@ -26,7 +26,10 @@ export default function FAQ() {
           }}
           info={{
             title: "Jak mieć internet w pokoju",
-            text: "Podłącz sie do gniazdka XD",
+            text:
+              "Należy podłączyć się kablem Ethernet (RJ-45) do odpowiedniego gniazdka." +
+              "Następnie przy próbach otwierania różnych kart przeglądarki powinno nastąpić prekierowanie" +
+              " do stronu uniwersyteckiej w celu weryfikacji.",
           }}
         />
         <FaqElement
@@ -35,8 +38,8 @@ export default function FAQ() {
             alt: "placeholder_logo",
           }}
           info={{
-            title: "Jak mieć internet w pokoju",
-            text: "Podłącz sie do gniazdka XD",
+            title: "Czy mogę używać routera?",
+            text: "Z powodów bezpieczeństwa routery są zakazane. Jeżeli chcesz mieć Wi-Fi w pokoju zalecamy użycie hotspotu, bądź switcha.",
           }}
         />
         <FaqElement
@@ -45,8 +48,8 @@ export default function FAQ() {
             alt: "placeholder_logo",
           }}
           info={{
-            title: "Jak połączyć sie z Wi-Fi?",
-            text: "Wi-fi obejmuje swoim zasięgiem tylko okolice parteru, jednak jeżeli chcesz używać wi-fi możesz skorzystać z hotspotu",
+            title: "Jestem podłączony ale internet dalej nie działa.",
+            text: "Poniżej możesz zobaczyć sposoby komunikacji z administratorami sieci. Wybierz dogodny sposób i pomoc powinna przyjść tego samego dnia.",
           }}
         />
       </div>

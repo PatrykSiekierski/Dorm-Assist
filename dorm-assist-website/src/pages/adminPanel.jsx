@@ -26,7 +26,7 @@ export default function AdminPanel() {
     verifyAdmin();
   }, [navigate, token]);
 
-  const avilableCategories = ["Zgłoszenia", "Użytkownicy", "Historia"];
+  const avilableCategories = ["Zgłoszenia", "Użytkownicy"];
 
   if (verified) {
     return (

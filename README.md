@@ -27,6 +27,5 @@
 <p>Also for woth mentioning skills I learned: </p>
 <ul>
  <li>Token authentication (jwt)</li>
- <li>Role-based access control (RBAC)</li>
  <li>Password hashing</li>
 </ul>

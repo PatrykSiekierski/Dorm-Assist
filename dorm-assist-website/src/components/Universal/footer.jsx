@@ -10,8 +10,9 @@ export default function Footer() {
           </p>
         </div>
         <div>
-          <h2>Navigation links</h2>
+          <h2>Nawigacja</h2>
           <nav id="links">
+            <a href="/">Strona główna</a>
             <a href="/#faq-article">Pytania</a>
             <a href="/report">Zgłoś Online</a>
           </nav>

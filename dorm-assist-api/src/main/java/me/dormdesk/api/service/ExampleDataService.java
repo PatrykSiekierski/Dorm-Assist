@@ -4,26 +4,28 @@ import me.dormdesk.api.model.ExampleUsersData;
 import me.dormdesk.api.model.UserData;
 import me.dormdesk.api.repository.ExampleUserRepo;
 import me.dormdesk.api.repository.UserRepo;
+import me.dormdesk.api.utils.ApiException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ExampleUsersService {
+public class ExampleDataService {
 
     ExampleUserRepo exampleUserRepo;
+    ExampleReportService exampleReportService;
     UserRepo userRepo;
 
-    public ExampleUsersService(ExampleUserRepo exampleUserRepo, UserRepo userRepo) {
+    public ExampleDataService(ExampleUserRepo exampleUserRepo, ExampleReportService exampleReportService, UserRepo userRepo) {
         this.exampleUserRepo = exampleUserRepo;
+        this.exampleReportService = exampleReportService;
         this.userRepo = userRepo;
     }
 
     public List<ExampleUsersData> getAllExampleUsers(UserData user) {
         if (user == null) {
-            //Need to make and error/exception that user is empty
-            return null;
+            throw ApiException.unauthorized("You can't make this type of requests without loging in properly");
         }
         return exampleUserRepo.findByUserId(user.getId());
     }
@@ -35,9 +37,8 @@ public class ExampleUsersService {
 //        }
 
         if (user == null) {
-            System.out.println("User is null");
+            throw ApiException.unauthorized("You can't make this type of requests without loging in properly");
         }
-        System.out.println("User is: " + user);
 
         ExampleUsersData exampleUser;
         do {
@@ -57,15 +58,15 @@ public class ExampleUsersService {
     }
 
     public void deleteExampleUser(ExampleUsersData exampleUsersData, UserData user) {
-        System.out.println("1");
         if (user == null) {
-            //Need to make and error/exception that user is empty
-            return;
+            throw ApiException.unauthorized("You can't make this type of requests without loging in properly");
         }
-        System.out.println("2");
         if (exampleUsersData.getUser().getId() != user.getId()) throw new RuntimeException("Requesting user is different than the owner");
 
-        System.out.println("3");
+        exampleReportService.getAllReports(user).stream()
+                        .filter(report -> report.getExampleUserData().getId() == exampleUsersData.getId())
+                        .forEach(report -> exampleReportService.deleteExampleReport(report, user));
+
         exampleUserRepo.deleteById(exampleUsersData.getId());
     }
 

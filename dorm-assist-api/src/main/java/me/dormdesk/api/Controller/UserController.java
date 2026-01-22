@@ -1,5 +1,7 @@
 package me.dormdesk.api.Controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import me.dormdesk.api.model.LoginForm;
 import me.dormdesk.api.model.UserData;
@@ -18,6 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@Tag(name = "User controller", description = "Allows managing user's account.")
 public class UserController {
 
     UserService service;
@@ -30,25 +33,21 @@ public class UserController {
         this.jwtService = jwtService;
     }
 
-    //Temporary, so it can verify user permissions
+    @Operation(summary = "Quick admin validation", description = "Debugging tool for validating jwt status.")
     @CrossOrigin
     @GetMapping("/admin/verify")
     public boolean verifyAdmin() {
         return true;
     }
 
+    @Operation(summary = "Retruns ALL users", description = "Return list of ALL users, including generated and real users.")
     @CrossOrigin
     @GetMapping("/admin/get")
     public List<UserData> getUsers() {
         return service.getUsers();
     }
 
-    @CrossOrigin
-    @DeleteMapping("/admin/deletetarget")
-    public ResponseEntity<String> deleteTargetUser(@RequestBody String username) {
-        return service.deleteTargetUser(username);
-    }
-
+    @Operation(summary = "User log in", description = "Verifies user credentials and generated JWT token.")
     @CrossOrigin
     @PostMapping("/authenticate")
     public String authenticateAndGetToken(@RequestBody LoginForm loginForm) {
@@ -62,18 +61,21 @@ public class UserController {
         }
     }
 
+    @Operation(summary = "Change Password", description = "Allows user to change password")
     @CrossOrigin
     @PutMapping("/change/password")
     public ResponseEntity<String> changePassword(@RequestBody UserChangeModel userChangeModel, @AuthenticationPrincipal UserData user) {
         return service.changePassword(user, userChangeModel);
     }
 
+    @Operation(summary = "Change Username", description = "Allows user to change username")
     @CrossOrigin
     @PutMapping("/change/username")
     public ResponseEntity<String> changeUsername(@RequestBody UserChangeModel userChangeModel, @AuthenticationPrincipal UserData user) {
         return service.changeUsername(user, userChangeModel);
     }
 
+    @Operation(summary = "Deletes account", description = "Allows user to delete account")
     @CrossOrigin
     @DeleteMapping("/change/delete")
     public ResponseEntity<String> deleteUser(@RequestBody String password, @AuthenticationPrincipal UserData user) {

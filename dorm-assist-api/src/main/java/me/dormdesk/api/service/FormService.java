@@ -5,10 +5,10 @@ import me.dormdesk.api.model.FormData;
 import me.dormdesk.api.model.UserData;
 import me.dormdesk.api.repository.FormRepo;
 import me.dormdesk.api.repository.UserRepo;
+import me.dormdesk.api.utils.ApiException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class FormService {
@@ -21,28 +21,28 @@ public class FormService {
         this.repo = repo;
     }
 
-//    public List<FormData> getSampleReports() {
-//        return repo.findAll().reversed();
-//    }
-
-    public void sendToRepo(FormData data, UserData user) {
+    public void createNewReport(FormData data, UserData user) {
         data.setUser(user);
         repo.save(data);
     }
 
     @Transactional
     public void updateForms(FormData report) {
-//        for (FormData report : reports) {
-            repo.updateIsSolved(report.getId(), report.isSolved());
-//        }
+        repo.updateIsSolved(report.getId(), report.isSolved());
     }
 
     public List<FormData> getUserReports(UserData user) {
         if (user == null) {
-            //Need to make and error/exception that user is empty
-            return null;
+            throw ApiException.unauthorized("You can't make this type of requests without loging in properly");
         }
 
         return repo.findByUserId(user.getId());
+    }
+
+    public void deleteReport(FormData data, UserData user) {
+        if (user == null) {
+            throw ApiException.unauthorized("You can't make this type of requests without loging in properly");
+        }
+        repo.delete(data);
     }
 }

@@ -1,5 +1,7 @@
 package me.dormdesk.api.Controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import me.dormdesk.api.config.PasswordEncodingConfig;
 import me.dormdesk.api.model.UserData;
 import me.dormdesk.api.repository.UserRepo;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/registration")
+@Tag(name = "Registration controller", description = "Allows creation of account with ADMIN privilege.")
 public class RegistrationController {
 
     private UserRepo myUserRepository;
@@ -20,6 +23,7 @@ public class RegistrationController {
         this.passwordEncoder = passwordEncoder.passwordEncoder();
     }
 
+    @Operation(summary = "Creates user", description = "Creates user with admin privileges.")
     @CrossOrigin
     @PostMapping("/create")
     public ResponseEntity<String> createUser(@RequestBody UserData user) {

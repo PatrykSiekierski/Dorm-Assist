@@ -41,6 +41,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(registry -> {
                     registry.requestMatchers("/registration/**", "/users/authenticate").permitAll();
                     registry.requestMatchers("/users/admin/**").hasRole("ADMIN");
+                    registry.requestMatchers("/swagger-ui/**").permitAll();
+                    registry.requestMatchers("/swagger-ui.html").permitAll();
+                    registry.requestMatchers("/v3/api-docs/**").permitAll();
 //                    registry.requestMatchers(HttpMethod.DELETE, "/users/admin/delete").authenticated();
                     registry.requestMatchers("/users/**").authenticated();
                     registry.requestMatchers("/form/admin/**").hasRole("ADMIN");

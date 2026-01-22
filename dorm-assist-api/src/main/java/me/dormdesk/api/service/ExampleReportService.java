@@ -8,6 +8,7 @@ import me.dormdesk.api.model.UserData;
 import me.dormdesk.api.repository.ExampleReportRepo;
 import me.dormdesk.api.repository.ExampleUserRepo;
 import me.dormdesk.api.repository.UserRepo;
+import me.dormdesk.api.utils.ApiException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,8 +31,7 @@ public class ExampleReportService {
 
     public List<ExampleReportData> getAllReports(UserData user) {
         if (user == null) {
-            //Need to make and error/exception that user is empty
-            return null;
+            throw ApiException.unauthorized("You can't make this type of requests without loging in properly");
         }
 
         List<ExampleUsersData> exampleUsersData = exampleUserRepo.findByUserId(user.getId());
@@ -45,12 +45,13 @@ public class ExampleReportService {
 
     public ExampleReportData addExampleReport(UserData user) {
         if (user == null) {
-            //Need to make and error/exception that user is empty
-            return null;
+            throw ApiException.unauthorized("You can't make this type of requests without loging in properly");
         }
 
         List<ExampleUsersData> exampleUsersData = exampleUserRepo.findByUserId(user.getId());
-        if (exampleUsersData.isEmpty()) throw new RuntimeException("There are no example users that can be linked to generation.");
+        if (exampleUsersData.isEmpty()) {
+            throw ApiException.notFound("There are no example users that can be linked to generation.");
+        }
         Random random = new Random();
         ExampleUsersData exampleUser = exampleUsersData.get(random.nextInt(exampleUsersData.size()));
 
@@ -61,17 +62,15 @@ public class ExampleReportService {
     }
 
     public void deleteExampleReport(ExampleReportData exampleReportData, UserData user) {
-        if (exampleReportData.getExampleUserData().getUser().getId() == user.getId()) {
-            //Need to make and error/exception that user is trying to delete someone's else user
-            return;
+        if (exampleReportData.getExampleUserData().getUser().getId() != user.getId()) {
+            throw ApiException.unauthorized("Issue deleting generated user of other user");
         }
         repo.deleteById(exampleReportData.getId());
     }
 
     public void updateExampleReport(ExampleReportData exampleReportData, UserData user) {
         if (exampleReportData.getExampleUserData().getUser().getId() != user.getId()) {
-            //Need to make and error/exception that user is trying to delete someone's else user
-            return;
+            throw ApiException.unauthorized("Issue deleting generated user of other user");
         }
 
         repo.save(exampleReportData);

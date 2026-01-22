@@ -1,6 +1,7 @@
 package me.dormdesk.api.Controller;
 
-import jakarta.servlet.http.HttpServletRequest;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import me.dormdesk.api.model.FormData;
 import me.dormdesk.api.model.UserData;
 import me.dormdesk.api.service.FormService;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/form")
-@CrossOrigin()
+@Tag(name = "Form controller", description = "Takes care of creating, sending and managing forms from real users.")
 public class FormController {
 
     JwtService jwtService;
@@ -22,25 +23,20 @@ public class FormController {
         this.service = service;
     }
 
-//    @GetMapping("/admin/getsample")
-//    public List<FormData> getSampleReports() {
-//        return service.getSampleReports();
-//    }
-
+    @Operation(summary = "Returns all Reports", description = "Returns real reports with those created manually by user.")
     @GetMapping("/admin/get")
     public List<FormData> getUserReports(@AuthenticationPrincipal UserData user) {
         return service.getUserReports(user);
     }
 
+    @Operation(summary = "Creates new report", description = "Saves report manually created by user.")
     @PostMapping("/admin/post")
-    public FormData postTest(@RequestBody FormData report, @AuthenticationPrincipal UserData user) {
-        System.out.println(report);
-
-//        System.out.println("Pokój: " + report.getRoomNumber());
-        service.sendToRepo(report, user);
+    public FormData createNewReport(@RequestBody FormData report, @AuthenticationPrincipal UserData user) {
+        service.createNewReport(report, user);
         return report;
     }
 
+    @Operation(summary = "Updated report", description = "Allows for changes like changing if its solved.")
     @PutMapping("/admin/update/solved")
     public void updateForms(@RequestBody FormData report) {
         service.updateForms(report);

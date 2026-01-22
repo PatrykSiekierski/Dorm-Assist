@@ -1,22 +1,16 @@
 package me.dormdesk.api.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserChangeModel {
 
-//    private final String username;
-    private final String password;
-    private final String dataToChange;
-
-    public UserChangeModel(String password, String dataToChange) {
-        this.password = password;
-        this.dataToChange = dataToChange;
-    }
-
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getNewData() {
-        return dataToChange;
-    }
+    private String password;
+    private String dataToChange;
 }
